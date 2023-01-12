@@ -11,3 +11,6 @@ daha sonra push atılır
 
 
 
+docker ile build almak için:
+
+docker build -t imaj ismi dizin(dizinin içindeyse . koyulacak)
