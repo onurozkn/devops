@@ -39,19 +39,6 @@ docker ps (kontrol edilebilir.)
 
 
 
-
-ELASTIC SEARCH STORAGE LIMIT ERROR :
-
-Sunucuda bulunan elastic search’deki memory hatası sunucudaki dolu alanın %90 üzerine çıkması üzerinden kaynaklanıyor olabilir. Bunun nedeni elastic search container’larının içindeki logların şişmesinden dolayıdır. Bunun için docker sisteminin temizlenmesi gerekmektedir.
-
-	-  docker system prune -a  (Sonrasında ‘yes’ denilerek onaylanır ve sistem temizlenir.)
-
-	NOT: Bu işlem yapılırken işinize yarayacak ve kullanıyor olan containerların stop olmadığına emin 
-	olmanız gerekmektedir. Aksi takdirde çalışmayan containerlar ve bağlı olduğu overlay networkleri 
-	vs. de gidecektir.
-
-
-
 GEOSERVER ILE ALAKALI ISLEMLER (KONTROL): 
 
 1-) Geoserver’ın database ile entegrasyonu için ilk önce workspace(çalışma alanı) oluşturulur. Her uygulamanın kendi ismine göre oluşturulabilir.
