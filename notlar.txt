@@ -9,8 +9,14 @@ git add -A
 git commit -m "buraya commit mesajı"
 daha sonra push atılır
 
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 docker ile build almak için:
 
 docker build -t imaj ismi dizin(dizinin içindeyse . koyulacak)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Önceki yapılan işlemin başarılı olup olmadığını anlamak için = echo $? sonuç 0 olursa işlem başarılı demektir.
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
