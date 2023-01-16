@@ -7,12 +7,7 @@ TRAFIK SUNUCUSUNA GÜNCELLEME İŞLEMİ :
 2- Alınan merge jenkins tarafında derlenir. İşlemlerin başarılı olması ve versiyon numaralarının dockerhub’daki ile uyuşması gerekmektedir.
 
 
-
-
-
 3- Merge edildikten sonra dockerhub’da versiyonların sorunsuz geçip geçmediği kontrol edilir.
-
-
 
 
 4-Dockerhub’daki versiyonlar uyuşuyorsa sunucuya girilir.(ssh ile)
