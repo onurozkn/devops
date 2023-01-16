@@ -15,20 +15,20 @@ TRAFIK SUNUCUSUNA GÜNCELLEME İŞLEMİ :
 
 
 
-4-Dockerhub’daki versiyonlar uyuşuyorsa ve varsa https://baglan.csb.gov.tr/portal-ui/x/login/ adresinden csb’deki trafik sunucusuna bağlanılır.
+4-Dockerhub’daki versiyonlar uyuşuyorsa sunucuya girilir.(ssh ile)
 
 
-5- 172.17.31.211 sunucundaki trafik_appdb container durdurulur. Sonrasında dataların bulunduğu ilgili dizine gidilir. Bu dizinde container’ın backup’ı alınır ve yeniden başlatılır. 
+5-yedek almak için sunucundaki gerekli database container'ı durdurulur(docker stop $container_name). Sonrasında dataların bulunduğu ilgili dizine gidilir. Bu dizinde container’ın backup’ı alınır ve yeniden başlatılır. 
 
 	NOT:  ilgili dizin bilinmiyor ise docker inspect $container_name komutu ile mount edilen dizin 
 	bulunabilir.
 
 docker ps (database’in sunucuda varlığı kontrol edilir.) 
-docker stop trafik_appdb
-sudo cp -r ./media/data/postgis_appdb   /media/data/old_postgis_appdb_$DATE
-docker start trafik_appdb
+docker stop $container_name
+sudo cp -r .""/media/data/$container_name(yedeği alınacak container'ın konumu)""   ""/media/data/$container_name_$DATE(alınan yedeğin yeni bir isimle kopyalanacağı konum)""
+docker start $container_name
 
-6- 172.17.31.210 sunucundaki /home/trafik/services dizinine girilir. Containerlerın komut ile durdurulur.İçerisindeki docker-compose.yml dosyasında versiyon değişikliği yapılır. (Dockerhuba gelmiş olan en son versiyon). Sonrasında containerların çalışması için komut ile tekrar ayağa kaldırılır.
+6- yml dosyasının olduğu sunucundaki dizinine girilir. Containerlerın komut ile durdurulur.İçerisindeki docker-compose.yml dosyasında versiyon değişikliği yapılır. (Dockerhuba gelmiş olan en son versiyon). Sonrasında containerların çalışması için komut ile tekrar ayağa kaldırılır.
 
 docker-compose -f docker-compose.yml down 
 nano docker-compose.yml
@@ -38,30 +38,6 @@ docker ps (kontrol edilebilir.)
 	
 
 
-
-
-
-COMPOSE FILES:
-Trafik uygulamasının ayağa kalkması için gerekli dosyalar ‘/home/elasmap/Desktop/trafik’ içerisinde bulunmaktadır. Bu dosyalar aşağıdaki şekilde dosya ismi verilerek ayağa kaldırıp indirilebilir.
-
-	- docker compose -f docker-compose.yml up -d
-	- docker compose -f docker-compose.yml down
-
-	
-
-
-
-SPESIFIC SERVICE UPDATE : 
-Belirli bir servisin imajı güncellenmek istenebilir. Sadece KKN ya da sadece DATACLEAN servisi gibi. Bu durumda aşağıdaki komutlar kullanılabilir.
-
-
-NOT: Uygulamalar bizim sunucumuzda servisler ile kontrol edildiği için bu işlemler bizim sunucumuzda gerçekleşebilir. CSB(trafik)’nin sunucusunda docker-compose’lar ile ayağa kalktığı için orada ‘docker-compose.yml’ dosyasında değişiklik yapıp restart edilmelidir.
-
-
-- docker login (user and pass)
-- docker pull geoanka/trafik-python:kkngroup_4
-- docker service update  - - image geoanka/trafik-python:kkngroup_4   trafik_kkngroup
-- docker service ls (servisin güncellendiğini listeler)
 
 
 ELASTIC SEARCH STORAGE LIMIT ERROR :
