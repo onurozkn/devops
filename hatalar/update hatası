@@ -10,7 +10,7 @@ ilgili yml dosyalarının olduğu dizine gidilir
 yml dosyasının içine girilir: cat ""docker-compose.yml""
 ilgili yml dosyalarına environment'ler eklenir(biz bi tane ana yml dosyasına ve 2 tane ayrı yml dosyasına ekledik)
 yml dosyalarının içindeki imajlar son alınan imaj olarak değiştirilir
-ilgili yml dosyaları düzeltildikten sonra ilgili servisler silinir:docker service rm ""trafik_dataclean"" ""trafik_kkngroup""
-sonra tekrardan servisleri çalıştırmak için :docker stack deploy -c ""docker-compose-kkn-dataclean.yml"" ""trafik""
-imajı pull edemediğini anladığımız için tekrardan elimizle pull ettik:decker pull ""geoanka/trafik-python-kkngroup:Dev721""
-docker service ls ile tekradan replicas ları kontrol ettik ve sorun çözüldü.
+ilgili yml dosyaları düzeltildikten sonra ilgili servisler silinir:docker service rm $docker_service
+sonra tekrardan servisleri çalıştırmak için :docker stack deploy -c ""docker-compose.yml"" ""trafik""
+imajı pull edemediğini anladığımız için tekrardan elimizle pull ettik:decker pull $docker_image
+docker service ls ile tekradan replicas ları kontrol edilir.
