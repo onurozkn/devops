@@ -1,0 +1,65 @@
+
+		UYGULAMA AYAĞA KALDIRMA ADIMLARI
+
+
+1-) Sistem gereksinimleri karşılanmalı (Ram,Storage,Processor,Ubuntu System vb.)
+
+
+2-) İçerisini update ettikten sonra docker, docker-compose, nginx yüklenmelidir.
+
+
+sudo apt-get install docker.io
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get install docker.io
+sudo apt-get install docker-compose
+sudo apt-get install nginx
+
+3-) Uygulamalar indikten sonra user docker’ı göremiyor olabilir bunun için aşağıdaki komutlar girilir. Eğer docker komutları çalışıyor ise bu adımı es geçebilirsiniz.
+
+sudo groupadd docker
+sudo usermod -aG docker ${USER}
+su - ${USER}
+
+
+4-) Docker çalıştıktan sonra swarm networkü oluşturulması gerekmektedir. Bunun için aşağıdaki komut ile bir network oluşturulur.
+
+docker swarm init
+5- ) Networkümüz hazır olduğunda uygulamanın imajlarını çekmek gerekmektedir. Bunun için docker-compose.yml dosyasındaki imajları indiriyoruz.(Dockerhubda projenin en son imajı çalışıyorsa indirip kurabilirsiniz.)
+		Example:
+docker pull  $container_image_${LAST_BUILD_ID}
+6-) .yml dosyalarımızı çalıştırabiliriz. Bunun için dizinler içerisindeki yml dosyalarının konfigürasyonları gerçekleştirildikten sonra sırası ile çalışıtırılmalıdır. 
+
+		
+	NOT: Uygulama ayağa kaldırılırken dosyaların içerisindeki gereksinimleri karşılanmalı :
+		- İmajlar çekilmiş olmalı
+		- Volumeleri verilmeli
+		- Environmentları girilmeli
+		- Dışarıya açılması için portlar girilmiş olmalı
+		
+	
+		
+		Gereksinimler karşılandıktan sonra aşağıdaki komutlar girilir.
+
+		- docker stack deploy -f docker-compose.yml ""projenin ismi""
+		- docker compose -f docker-compose-elastic.yml up -d
+		- sh ""projenin sh dosyası"".sh
+    
+Sunucudaki ayakta olan uygulamaları kontrol etmek için de aşağıdaki komutlar girilir.
+
+		- docker service ls	→ Ayakta olan servisleri gösterir.	(trafik)
+		- docker ps			→ Ayakta olan containerları gösterir (elastic)
+
+
+
+	7-) Sonrasında NGINX te dışarıya açılması için gerekli adımlar sağlanır. Gerekli ayarlar yapıldıktan sonra aşağıdaki komutlar girilir. 
+
+		- sudo nginx -t
+		- sudo nginx -s reload
+	
+	NOT:  -  Her bir servis, dış portuna göre yönlendirme yapılmaldır. NGINX dosyasındaki 
+		  konfigürasyonlarda buna dikkat edilmeli
+		
+
+
+
