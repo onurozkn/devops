@@ -1,0 +1,5 @@
+// istenilen network'un bilgisini gösterir (enp6s0)
+ip address show enp6s0
+
+// Değiştirilmesi istenen network seçilerek istenen ip adresi yazılır ve değiştirilir.
+sudo ip addr add 60.50.221.194/29 dev enp6s0
