@@ -1,0 +1,5 @@
+docker ps yapılınca istenilen containerlar gözükmüyosa docker ps -a yapılır 
+containerların status değerleri exited ise containerlar restar edilir
+
+
+docker restart $container_name (boşluk bırakıp birden fazla container ismi yazılarak restart edilebilir)
