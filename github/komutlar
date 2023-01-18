@@ -1,0 +1,1 @@
+branch değişirmek için = git checkout $branch_name
