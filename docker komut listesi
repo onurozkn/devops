@@ -1,0 +1,88 @@
+------------------------------------------------------------
+build: Belirtilen image’ı build edip yükler.
+
+$ cd "imageExample"
+$ docker build –t <image name>
+
+------------------------------------------------------------
+pull: Belirtilen image’ı Docker hub üzerinden yükler.
+
+$ Docker pull <image Name>: <versiyon>
+
+------------------------------------------------------------
+run: Yüklenen image’ları çalıştırır.
+
+$ Docker run <image name>
+
+------------------------------------------------------------
+stop: Belirtilen container’ı durdurur.
+
+$ Docker stop <container id, name>
+
+------------------------------------------------------------
+images: Yüklenen image’ları gösterir.
+
+$ Docker images
+
+------------------------------------------------------------
+ps: Çalışan containerleri listeler.
+
+$ Docker ps
+
+------------------------------------------------------------
+ps-a: Çalışan ve çalışmayan tüm containerlerı listeler.
+
+$ Docker ps –a
+
+------------------------------------------------------------
+exec: Container içerisinde işlem yapmak için kullanılır.
+
+$ Docker exec <container id , name> <komut>
+
+------------------------------------------------------------
+–help: Öncesindeki komut hakkında bilgi verir.
+
+$ Docker <komut> —help
+
+------------------------------------------------------------
+–logs: Container logunu ekrana basar.
+
+$ Docker logs <container id>
+
+------------------------------------------------------------
+inspect: Belirtilen öğenin bilgilerini getirir.
+
+$  Docker inspect <container id, volume name, ...>
+
+------------------------------------------------------------
+rm: Belirtilen container’ı siler.
+
+$  Docker rm <container id>
+------------------------------------------------------------
+
+rmi: Belirtilen image’ı siler.
+
+$ Docker rmi <image name>
+
+------------------------------------------------------------
+-t: Container’e isim vermek için kullanılır.
+
+$ Docker build –t <image name> .
+
+------------------------------------------------------------
+-p: Port vermek için kullanılır.
+
+$ Docker run –p <port>: <Docker port>
+
+------------------------------------------------------------
+-e: Environment dışarıdan verildiğinde kullanılır.
+
+$ Docker run -e <environmentName> = "value" <image name>
+
+
+------------------------------------------------------------
+-d: Image’ı arka planda başlatır.
+
+$ Docker run -d <image name>
+
+------------------------------------------------------------
