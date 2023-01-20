@@ -1,12 +1,13 @@
 Alacağımız build ismini dockerhub'dan veya projenin jenkins dosyasının içinden öğrenilir.
 Projenin uygulamaları için ayrı ayrı build alınır 
-     docker login
-     docker build -t $image_name:versiyon numarası .
+
+    - docker login
+    - docker build -t $image_name:versiyon numarası .
 Aldığımız buildler dockerhub'a pushlanır
      
-     docker push $image_name:versiyon
+    - docker push $image_name:versiyon
     
 Push attıktan sonra update için imajlar pushlanır ve update edilir
 
-    docker pull $image_name:versiyon
-    docker service update $image_name
+    - docker pull $image_name:versiyon
+    - docker service update $image_name
