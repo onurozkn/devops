@@ -20,3 +20,5 @@ docker build -t imaj ismi dizin(dizinin içindeyse . koyulacak)
 Önceki yapılan işlemin başarılı olup olmadığını anlamak için = echo $? sonuç 0 olursa işlem başarılı demektir.
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+container loglarına bakmak için = docker logs $container_name
