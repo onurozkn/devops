@@ -3,11 +3,12 @@ Projenin uygulamaları için ayrı ayrı build alınır
 
     - docker login
     - docker build -t $image_name:versiyon numarası .
+    
 Aldığımız buildler dockerhub'a pushlanır
      
-    - docker push $image_name:versiyon
+    - docker push $image_name:versiyon numarası
     
 Push attıktan sonra update için imajlar pushlanır ve update edilir
 
-    - docker pull $image_name:versiyon
+    - docker pull $image_name:versiyon numarası
     - docker service update $image_name
