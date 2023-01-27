@@ -1,0 +1,27 @@
+#!/bin/bash
+export VERSION=$1
+docker login
+
+
+GIS_IMG='geoanka/osb-gis-dev:'${VERSION}
+PANEL_IMG='geoanka/osb-panel-dev:'${VERSION}
+APPEAL_IMG='geoanka/osb-appeal-dev:'${VERSION}
+BACKEND_IMG='geoanka/osb-backend-dev:'${VERSION}
+LOGGER_IMG='geoanka/osb-backendnotify-dev:'${VERSION}
+
+docker pull ${GIS_IMG}
+docker pull ${PANEL_IMG}
+docker pull ${APPEAL_IMG}
+docker pull ${BACKEND_IMG}
+docker pull ${LOGGER_IMG}
+
+docker service update --image ${GIS_IMG} osb_gis
+docker service update --image ${PANEL_IMG} osb_panel
+docker service update --image ${APPEAL_IMG} osb_appeal
+docker service update --image ${BACKEND_IMG} osb_backend
+docker service update --image ${LOGGER_IMG} osb_backend_notify
+
+
+kaydedildikten sonra 
+chmod +x services_update.sh komutu ile yetkilendirilir
+./services_update.sh ile çalıştırılır
