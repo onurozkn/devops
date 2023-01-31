@@ -1,0 +1,29 @@
+template1 databasei olmadığından dolayı backup alma işlemini gerçekleştiremediği hatası alınmaktadır. Bunun için aşağıdaki linkte anlatılmıştır.
+database containerının içerisine girerek ve psql kullanıcısı içerisinde sql komutları ile bir user tanımlanarak template1 e izinler verilmelidir.
+sonrasında sorunsuz backup işlemini yapacaktır.
+
+
+
+    - sudo su - postgres
+
+    - psql template1
+
+    "süper kullanıcı" olarak ayrıcalıkla pgsql üzerinde rol oluşturma
+    - CREATE ROLE username superuser;
+        eg. CREATE ROLE demo superuser;
+
+
+    Ardından kullanıcı oluştur
+    - CREATE USER username; 
+        eg. CREATE USER demo;
+
+    Kullanıcıya ayrıcalık ata
+    - GRANT ROOT TO username;
+
+    Ardından, bu kullanıcının oturum açmasını etkinleştirin, böylece psql template1normal $terminalden örneğin: çalıştırabilirsiniz:
+    - ALTER ROLE username WITH LOGIN;
+
+
+
+Bu linkteki 163.ü cevap detaylı oalrak açıklanmıştır bakılabilir.
+https://stackoverflow.com/questions/11919391/postgresql-error-fatal-role-username-does-not-exist
