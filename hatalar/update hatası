@@ -4,11 +4,11 @@ hata alınan server içine girilir
 
 hata alınan servisi görmek için servisler listelenir:docker service ls
 
-hata alınan servisin loglarına bakılır:docker service logs .....
+hata alınan servisin loglarına bakılır:docker service logs $service_name
 
 o an ki hata :  "opperational error:connection to server socket"
 
-hata alınan servisin içine bakılır:docker service inspect ......
+hata alınan servisin içine bakılır:docker service inspect $service_name
 
 environment leri eksik ise sonraki adımlar izlenir.
 
