@@ -1,0 +1,21 @@
+İLGİLİ KAYNAK: 
+ - https://stackoverflow.com/questions/47580528/error-response-from-daemon-get-https-registry-1-docker-io-v2-dial-tcp-look
+
+HATA MESAJI: 
+ - Error response from daemon: Get "https://registry-1.docker.io/v2/": dial tcp: lookup registry-1.docker.io: Temporary failure in name resolution
+
+
+
+
+
+Bu hata alınıyorsa nedeni DNS'ten kaynaklı olabilir. İlk olarak docker sistemini restart etmeyi deneyin. İşe yaramadığı takdirde aşağıdaki resolv.conf
+dosyasında DNS ekleyin.
+
+
+Open config file sudo nano /etc/resolv.conf and add the following under existing nameservers
+    - nameserver 8.8.8.8
+    - nameserver 8.8.4.4
+
+Run following commands to restart daemon and docker service
+    - sudo systemctl daemon-reload
+    - sudo systemctl restart docker
