@@ -1,0 +1,13 @@
+Docker yüklü olduğu halde "docker images","docker ps" ve "docker service ls" komutları çalışmayabilir.
+Bunun nedeni indirme işleminde hem apt hem snapd kullanılmasıdır. İkisi farklı nodelardaymış gibi görünür ve sizin containerlarınız görünmez. Ya diğer node'a
+geçmeniz gerekmektedir ya da var olan snap docker'ını silmeniz gerekmektedir.
+
+
+    - sudo snap remove docker
+
+    bu komutu yaptıktan sonra sistemi reboot edilmeli. Sonrasında containerlarını görüntüllenecektir.
+
+
+
+İlgili döküman :  
+    https://askubuntu.com/questions/1315822/docker-containers-running-but-not-showing-up-in-docker-ps
