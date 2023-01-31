@@ -1,0 +1,34 @@
+Docker ile image alıp containerın içinde sanal db oluşturma
+
+1-) Docker-compose.yml tarzında bir docker-compose file oluşturulur ve içerisine gerekli değerler girilir. Örnek olarak postgis 
+üzerinde işlem yapacağımız için onun bilgilerini gireli.
+
+	version: "3.3"
+	services:
+  	  postgis:
+    	    image: selimabidin/pgpointcloud:300con
+    	    ports:
+      	      - 5432:5432
+    	    volumes:
+      	      - ./test_db:/var/lib/postresql/data:rw
+    	    environment:
+              - POSTGRES_PASSWORD=dockertest
+              - POSTGRES_USER=postgres
+              - POSTGRES_DB=dockertest_postgis
+ 
+Postgres pass,user,db bilgileri kişisel olarak değiştirilir ve dockerhubdan çekilmesi istenilen image yazılır.
+
+2-) Compose file oluşturulduktan sonra ilgili dizine gelerek:
+		"C:\sefa\test> docker-compose up komutu" ile file çalıştırılır.
+
+3-) Docker volume oluşturulur:
+		"docker volume create  test_db"
+
+3-) "docker ps" ile ayağa kaldrılan containerlara bakılır ve içine gireceğimiz containerın ismi kopyalanarak:
+		"docker exec -ti docker_test bash" komutu ile containerın içerisine girilir.
+
+4-) Container içerisine girdikten sonra İstenilen database bağlanmak için compose file'daki bilgier çalıştırılır:
+		"psql -h ${{localhot-or-host}} -d ${{database-name}} -U ${{user-name}} -W"
+
+5-) "\l" komutu ile aktif databaseler görüntülenir. Bağlı olan databaseler arasında geçiş yapabilmek için :
+		"\c ${{database-name}}" komutu kullanılır.
