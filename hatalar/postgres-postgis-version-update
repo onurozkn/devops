@@ -1,0 +1,22 @@
+https://hollo.me/devops/upgrade-postgresql-database-with-docker.html
+
+
+# 1. Dump all data from the old database version to a single file
+docker-compose exec postgres pg_dumpall -U "my-postgres-user" > ./dump_backup.sql
+
+# 2. Stop the container
+docker service scale 'container_name'=0
+ 
+# 3. Remove the data volume
+docker volume rm <prefix>_postgres      or      sudo rm -r '/container/mount/path'
+
+# 4. Change the image version in docker-compose.yml
+docker service update --image 'new postgres image' 'container_name'
+
+# 5. Start the new container and initialize a blank database instance
+docker service scale 'container_name'=1
+
+# 6. Import the dumped file into the database instance
+docker cp ./dump_backup.sql 'container_name':/
+docker exec -ti 'container_name' bash
+psql -U 'postgres-user' < dump_backup.sql
