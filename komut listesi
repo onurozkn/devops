@@ -41,3 +41,14 @@ chown - Dosya veya klasörlerin sahipliğini verme komutu
 docker images -a | grep "osb-backend-dev" | awk '{print $1":"$2}'
 stunlarını seçip işlem yapabilmek için kulanılır 
 '{print $1}' bu şekilde kullanılırsa sadece 1. stunu seçer
+
+Dosyanın ve içindeki dosyaların boyutlarını gösterir.
+	- du dosya_adı
+
+Sadece seçilen dosyanın boyutunu gösterir.
+	- du -sh dosya_adı
+
+Bilgisayardaki kullanılan ve boş alanları gösterir
+	- df -h
+	
+docker rmi -f $(docker images -f "dangling=true" -q)
