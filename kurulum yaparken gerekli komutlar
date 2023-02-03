@@ -1,0 +1,26 @@
+1-) Sistem gereksinimleri karşılanmalı (Ram,Storage,Processor,Ubuntu System vb.)
+
+
+2-) İçerisini update ettikten sonra docker, docker-compose, nginx yüklenmelidir.
+
+
+sudo apt-get install docker.io
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get install docker.io
+sudo apt-get install docker-compose
+sudo apt-get install nginx
+
+3-) Uygulamalar indikten sonra user docker’ı göremiyor olabilir bunun için aşağıdaki komutlar girilir. Eğer docker komutları çalışıyor ise bu adımı es geçebilirsiniz.
+
+sudo groupadd docker
+sudo usermod -aG docker ${USER}
+su - ${USER}
+
+4-) Docker çalıştıktan sonra swarm networkü oluşturulması gerekmektedir. Bunun için aşağıdaki komut ile bir network oluşturulur.
+
+docker swarm init
+
+5-) Nginx dışarıya açılması için:
+		- sudo nginx -t
+		- sudo nginx -s reload
