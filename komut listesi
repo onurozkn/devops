@@ -46,7 +46,7 @@ Dosyanın ve içindeki dosyaların boyutlarını gösterir.
 	- du dosya_adı
 
 Sadece seçilen dosyanın boyutunu gösterir.
-	- du -sh dosya_adı
+	- du -sh dosya_adı sonuna "*" koyulursa dosyanın içindeki dosyaların boyularını gösterir.
 
 Bilgisayardaki kullanılan ve boş alanları gösterir
 	- df -h
