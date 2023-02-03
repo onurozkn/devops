@@ -39,6 +39,10 @@ exec: Container içerisinde işlem yapmak için kullanılır.
 
 $ Docker exec <container id , name> <komut>
 
+containerın içine girip işlem yapmak için:
+
+docker exec -ti $container_name bash 
+
 ------------------------------------------------------------
 –help: Öncesindeki komut hakkında bilgi verir.
 
