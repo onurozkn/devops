@@ -3,11 +3,11 @@ export VERSION=$1
 docker login
 
 
-GIS_IMG='geoanka/osb-gis-dev:'${VERSION}
-PANEL_IMG='geoanka/osb-panel-dev:'${VERSION}
-APPEAL_IMG='geoanka/osb-appeal-dev:'${VERSION}
-BACKEND_IMG='geoanka/osb-backend-dev:'${VERSION}
-LOGGER_IMG='geoanka/osb-backendnotify-dev:'${VERSION}
+GIS_IMG='$image_ismi:'${VERSION}
+PANEL_IMG='$image_ismi:'${VERSION}
+APPEAL_IMG='$image_ismi:'${VERSION}
+BACKEND_IMG='$image_ismi:'${VERSION}
+LOGGER_IMG='$image_ismi:'${VERSION}
 
 docker pull ${GIS_IMG}
 docker pull ${PANEL_IMG}
