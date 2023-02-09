@@ -1,1 +1,6 @@
 branch değişirmek için = git checkout $branch_name
+
+
+bilgisayara girilen tokeni hatırlatmak için = 
+
+git config --global credential.helper store
