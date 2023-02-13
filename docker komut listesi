@@ -94,5 +94,10 @@ $ Docker run -d <image name>
 çalışan bütün container ları durdurma:
 $  docker stop $(docker ps -aq)
 
+bütün duran containerları silmek :
+$  docker rm $(docker ps -aq)
+
+------------------------------------------------------------
+
 
 -----------------------------------------------------------
