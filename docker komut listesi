@@ -90,3 +90,9 @@ $ Docker run -e <environmentName> = "value" <image name>
 $ Docker run -d <image name>
 
 ------------------------------------------------------------
+
+çalışan bütün container ları durdurma:
+$  docker stop $(docker ps -aq)
+
+
+-----------------------------------------------------------
