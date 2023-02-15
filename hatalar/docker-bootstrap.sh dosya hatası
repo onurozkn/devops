@@ -1,0 +1,4 @@
+ERROR: for trafik_app  Cannot start service superset: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: exec: "/app/docker/docker-bootstrap.sh": stat /app/docker/docker-bootstrap.sh: no such file or directory: unknown
+
+bualına hatayı düzeltmak için docker media/data/"gerekli uygulama"/ dizinin içinde docker dosyası ve kurulum sh ları olması gerekmektedir, gerekli olan kurulumlar elasmap sunucusunun içerisinde vardır.
+bu dosyaları yukardaki dizine kopyalamamız yeterli olacaktır.
