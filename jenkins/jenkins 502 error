@@ -1,0 +1,16 @@
+Jenkins nadirde olsa kendiliğinden 502 döndürebilirz.Böyle durumlarda
+
+- sudo service nginx status
+- sudo service jenkins status
+
+ile nginxlerin ve jenkinsin durumlarına bakılır. Sonrasında hatalar görünüyor ise onlar düzenlenir. Hata yok ise
+
+- sudo service nginx stop
+- sudo service nginx start
+
+ve 
+
+- sudo service jenkins stop
+- sudo service jenkins start
+
+denilerek serviceler tekrar restart edilir.
