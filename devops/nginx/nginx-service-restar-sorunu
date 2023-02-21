@@ -1,0 +1,31 @@
+- sudo systemctl status nginx.service 
+● nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
+     Active: failed (Result: exit-code) since Wed 2022-03-02 13:31:48 +03; 12s ago
+       Docs: man:nginx(8)
+    Process: 3357485 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+    Process: 3357486 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=1/FAILURE)
+
+Mar 02 13:31:46 sefa systemd[1]: Starting A high performance web server and a reverse proxy server...
+Mar 02 13:31:46 sefa nginx[3357486]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+Mar 02 13:31:46 sefa nginx[3357486]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+Mar 02 13:31:47 sefa nginx[3357486]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+Mar 02 13:31:47 sefa nginx[3357486]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+Mar 02 13:31:48 sefa nginx[3357486]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+Mar 02 13:31:48 sefa nginx[3357486]: nginx: [emerg] still could not bind()
+Mar 02 13:31:48 sefa systemd[1]: nginx.service: Control process exited, code=exited, status=1/FAILURE
+Mar 02 13:31:48 sefa systemd[1]: nginx.service: Failed with result 'exit-code'.
+Mar 02 13:31:48 sefa systemd[1]: Failed to start A high performance web server and a reverse proxy server.
+
+
+
+
+
+Yukarıdaki hata alınıyor ise serviceler kontrol edilmeli. 2 adet reverse proxy kullanılıyor olabilr (nginx,haproxy,traeffic gibi). Bunlardan
+çalışmaaynları stop edip ya da silip kullanılacak olan çalıştırılmalıdır. Bunlar kontrol edildğği taktirde aşağıdaki komutları kullanabilirsiniz:
+
+    - sudo fuser -k 80/tcp
+    - sudo fuser -k 443/tcp
+    - sudo service nginx restart
+
+Bu sorunu belki çözebiliri.

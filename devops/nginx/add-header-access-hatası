@@ -1,0 +1,6 @@
+add hader access control cross origin hatasının dönmemesini sağlar.
+
+location /scene {
+                add_header Access-Control-Allow-Origin *;
+                alias /media/4tb/OSB/scene;
+        }

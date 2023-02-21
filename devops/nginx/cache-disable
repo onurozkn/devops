@@ -1,0 +1,8 @@
+
+Aşağıdaki iki parametre nginx'in cache'ini disable yapmaktadır.
+    - proxy_no_cache 1;
+    - proxy_cache_bypass 1;
+
+
+Ancak tek satırlık bu kodun da işe yarayacağı söylenmiştir. Daha kullanışlı olduğundan bunu kullanmak daha iyi olacaktır.
+    - proxy_cache off;
