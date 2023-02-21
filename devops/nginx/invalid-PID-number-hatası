@@ -1,0 +1,7 @@
+nginx: [error] invalid PID number "" in "/run/nginx.pid" 
+Bu hata alındığında nginx processleri kendini restart edememektedir ve "nginx -s reload" çalışmamaktadır. Bunun için tüm processler öldürülük nginx yeniden başlatılır.
+
+
+pkill -9 nginx
+nginx -c /etc/nginx/nginx.conf
+nginx -s reload
