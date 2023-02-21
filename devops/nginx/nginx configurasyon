@@ -1,0 +1,54 @@
+nginx kurukduktan sonra kendi projenize göre configurasyon yapılması gerekmektedir
+kurulum için:
+-----------------------
+sudo apt install nginx
+-----------------------
+nginx başarıyla kurulduktan sonra varsayılan yapılandırmasını kaldırmak için :
+---------------------------------------
+sudo unlink /etc/nginx/sites-enabled/
+---------------------------------------
+ayrıca bu dizinin altına kendi doyamızı host name ile oluşturmamız ve port ayarlarını yapmamız gerekmektedir.
+------------------------------------------------------------------------------------------------------------
+örnek kod:
+
+server {
+        listen 87;
+        server_name _;
+
+        client_max_body_size 100M;
+        proxy_read_timeout 15000;
+        proxy_connect_timeout 15000;
+        proxy_send_timeout 15000;
+
+        location / {
+                proxy_pass http://localhost:5443/;
+        }
+        location /panel/ {
+                proxy_pass http://localhost:5442/;
+        }
+        location /api/v1/ {
+                proxy_pass http://localhost:5444/api/v1/;
+        }
+        location /geoserver/ {
+                proxy_pass http://localhost:5441/geoserver/;
+        }
+        location /elastic/ {
+                proxy_pass https://localhost:9200/;
+        }
+
+        location /icon-path {
+                alias /media/elasmap/4tb/trafik/icon-path;
+        }
+        location /dataclean/ {
+                proxy_pass http://localhost:5000/;
+        }
+        location /superset {
+                proxy_pass http://localhost:8088/;
+        }
+        location /kkn {
+#               add_header Access-Control-Allow-Origin *;
+                proxy_pass http://localhost:5001/;
+        }
+}
+
+----------------------------------------------------------------------------------------------
