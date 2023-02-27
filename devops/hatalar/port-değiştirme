@@ -1,0 +1,15 @@
+eğer bilinmiyor ise docker ps -a ile sıkıntılı olan container bulunur o kontainer ın ilgili compose dosyasına girilir
+
+kullanılan port numarsını kimin kullandığını öğrenmak isterseniz:
+    lsof -i tcp:9100
+
+içierisinde gerekli port değişikliği yapılır
+
+docker-compose -f "docker-compose.yml" down
+docker-compose -f "docker-compose.yml" up -d 
+komutları ile restart atılır
+
+daha sonra nginx konfigurasyonu yapılır:
+    cd /etc/nginx/sites-enabled/ dizini içinde gerekli dosyayı bulabilirsiniz.
+    sudo service nginx restart komutu ile restar atılır.
+   
