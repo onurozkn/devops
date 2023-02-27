@@ -1,7 +1,8 @@
 1. Grekli porgramlar kurulur (farklı bilgisayarlara ise her birine kurulum yapılır)
 2  Eğer farklı biligisayarlara kurulum gerekiyorsa docker swarm init ile bağlamak gerekiyor 
 docker swar init yazdıktan sonra gelen çıktıyı diğer bilgisayara girmek gerekir.
-kurulum scriplerin içerisine bağlanılacak bilgisayara göre constraints komutu eklenmelidir 
+kurulum scriplerin içerisine bağlanılacak bilgisayara göre constraints komutu eklenmelidir
+     --constaints=="bağlanılacak bilgisayar ipsi"
 3 install scriptinde ki gerekli env ler değiştirilir.
 4 install scriptinin içindeki post_install.sh dosyası database lerin kurulacağı bilgisayarda çalıştırılır 
 5 daha sonra instal scripti ana bilgisayarda çalıştırılır.
