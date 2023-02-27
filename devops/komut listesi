@@ -52,3 +52,10 @@ Bilgisayardaki kullanılan ve boş alanları gösterir
 	- df -h
 	
 docker rmi -f $(docker images -f "dangling=true" -q)
+
+
+hangi port numarısnı hangi uygulama kullanıyor öğrenmek için : 
+        -sudo netstat -lntp
+	
+spesifik port numarasının kullanıcısını öğrenmek için:
+        -lsof -i tcp:9100
