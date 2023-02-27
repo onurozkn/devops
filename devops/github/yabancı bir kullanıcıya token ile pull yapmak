@@ -1,0 +1,16 @@
+ 
+
+Örneğin; 
+
+github-username yusufborucu
+token ghp_abcd1234
+git-url github.com/yusufborucu/test.git
+olsun.
+
+Bu durumda yazmanız gereken komut;
+
+git remote set-url origin https://yusufborucu:ghp_abcd1234@github.com/yusufborucu/test.git
+
+daha sonra pull yapabiliriz
+
+git pull
