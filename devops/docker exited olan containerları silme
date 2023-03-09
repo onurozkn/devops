@@ -1,0 +1,2 @@
+BU komut exited olan ve creadted olarak kalmış çalışmayan bütün containerları siler.
+docker rm $(docker ps -a -f status=exited -f status=created -q)
