@@ -1,0 +1,21 @@
+1- Öncelikle projenin içerisindeki jenkins dosyasına ansible bölümü oluşturulur.
+
+2- Aşağıdaki örnekte olduğu gibi host adı verirlir
+
+- name: Update servers Images
+  hosts: koza
+
+3-Uygulamamızın kurulacağı bilgisayarın ip adresi öğrenilir
+
+4-Yukarıda bahsettiğimiz host adını jenkinsin bağlı olduğu bilgisayarın /etc/ansible/host dizinine girilir.
+
+5-Dosya içerisine uygulamamızın host ismi ve ip adresi eklenir.
+
+6-Jenkins bilgisayarımızda .ssh/id_rsa_pub dosyasının içeriği kopyalanır.
+
+7-Jenkins bilgisyarından uygulama bilgisayarına giriş yapılır
+
+8-Aynı şekilde .ssh dizinine girilip authorized_keys içerisine yapıştırılır.
+
+9-Eğer uygulamaya root olarak giriş yapılacaksa sudo su ile roota geçiş yapılır ve cd /root/home/.ssh/authorized_keys dosyasına aynı işlme uygulanır.
+(bu bilgi uygulamada jenkinsfile içerisinde """becomeUser: 'root',""" satırından öğrenilebilir.
