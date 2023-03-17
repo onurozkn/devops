@@ -62,3 +62,6 @@ spesifik port numarasının kullanıcısını öğrenmek için:
 
 nginx e ssl eklemek için :
         -sudo certbot --nginx
+	
+tar yaparken belli dosyaları dahil etmemek için:
+        -sudo tar --exclude 'geoserver/data/*.txt' -czvf geoserver_20230316.tar.gz geoserver/
