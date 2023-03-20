@@ -1,0 +1,31 @@
+/* DB 'de Türkçe karakter sıralama, uppercase, lowercase dönüşüm sorunu var 
+* 	Sorunu düzeltmek için aşağıdaki adımları takip edin
+*	1. Öncelikle postgresql container imajında Türkçe desteğini yüklemek gerekir. Yüklemenin İşletim Sistemi 
+      temelinde yapılması gerekir. İşlemler için osb_appdb başlatıldıktan sonra
+      "docker exec -ti osb_appdb.1..." komutu ile container'a giriş yapın.
+*  2. Container içindeyken aşağıdaki komutları verilen sırada çalıştırın
+		- apt-get update
+		- apt-get install locales-all
+		- dpkg-reconfigure locales (456 kodu seçilecek, sonra 3 seçilecek)
+		- locale-gen tr_TR
+		- locale-gen tr_TR.UTF-8
+		- update-locale
+		- exit (Container'dan çıkın)
+	3. Yapılan güncellemelerin kalıcı olması için container imajı commit ederek diske kaydedin
+		- "docker commit <container ID> geoanka/cloudapp-postgresql-tr_utf8:13"
+	4. Bundan sonra yapılacak işlemler osb_appdb container içinde çalışan postgresql DB ile ilgilidir.
+		İşlemleri yapmak için container'a "postgres" kullanıcısı ile giriş yaparak aşağıdaki adımları sırayla uygulayın.
+		- "docker exec -ti --user postgres osb_appdb.1... bash"
+		- "cd ~/data"
+		- "pg_dump cloud_data > cloud_data_dump.sql" (işlem öncesi yedek)
+		- "pg_dump cloud_admin > cloud_admin_dump.sql" 
+		- "psql"
+		- "drop database cloud_data with (FORCE);"
+		- "drop database cloud_admin with (FORCE);"
+		- "create collation "tr_TR.UTF-8" (LOCALE="tr_TR.UTF-8");"
+		- "create database cloud_admin LOCALE='tr_TR.UTF-8' ENCODING='UTF-8' TEMPLATE=template0;" (Türkçe destekli database oluşturur)
+		- "create database cloud_data LOCALE='tr_TR.UTF-8' ENCODING='UTF-8' TEMPLATE=template0;"
+		- "\q"  (psql'den çıkın)
+		- "psql cloud_admin < cloud_admin_dump.sql" (db 'yi geri yükler)
+		- "psql cloud_data < cloud_data_dump.sql"
+		- "exit" (container'dan çıkın)
