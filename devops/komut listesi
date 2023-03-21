@@ -66,5 +66,8 @@ nginx e ssl eklemek için :
 tar yaparken belli dosyaları dahil etmemek için:
         -sudo tar --exclude 'geoserver/data/*.txt' -czvf geoserver_20230316.tar.gz geoserver/
 
-spesifik bir dosyanın boyutunu öğrenmek için:
+spesifik bir dosyanın içerisindekilerle birlikte boyutunu öğrenmek için:
         - du ""dosya adı"
+
+spesifik bir dosyanın boyutunu öğrenmek için:
+        - du -sh ""dosya adı""
