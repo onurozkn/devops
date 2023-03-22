@@ -1,0 +1,5 @@
+Reading package lists...
+
+E: Failed to fetch https://apache.jfrog.io/artifactory/arrow/ubuntu/dists/jammy/InRelease  Clearsigned file isn't valid, got 'NOSPLIT' (does the network require authentication?)
+
+Bu hata image versiyonundan kaynaklanıyor olabilir daha önceki image versiyonlarını kullanabilirsiniz.
