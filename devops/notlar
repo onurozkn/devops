@@ -22,3 +22,8 @@ docker build -t imaj ismi dizin(dizinin içindeyse . koyulacak)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 container loglarına bakmak için = docker logs $container_name
+
+------------------------------------------------------------------------------
+
+bir scriptin belirli saatlerde çalışmasını sağlamak için crontab kullanılabilir. Aşağğıdaki site zaman ayarını istediğiniz şekilde düzenliyor
+  -https://crontab.guru/
