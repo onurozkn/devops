@@ -1,0 +1,7 @@
+Tarlamak istediğmiz image i tarlamak için:
+docker save -o <path for generated tar file> <image name>
+        -docker save -o örnek.tar redis:latest
+
+Tarladığımız image i çıkartmak için:
+docker load -i <path to image tar file>
+        -docekr load -i örnek.tar

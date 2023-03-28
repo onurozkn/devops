@@ -1,0 +1,19 @@
+Virtualization is an important topic in Linux and there are several tools and technologies available for virtualization. Here are some key concepts and tools to get started with virtualization on Linux:
+
+Hypervisor: A hypervisor is a software layer that allows multiple virtual machines (VMs) to run on a single physical host machine. There are two types of hypervisors: type 1 and type 2. Type 1 hypervisors run directly on the host's hardware and manage guest VMs, while type 2 hypervisors run on top of an existing operating system and manage guest VMs as applications.
+
+Virtual machine: A virtual machine is a software emulation of a physical machine. It runs an operating system and applications just like a physical machine, but it shares the host machine's hardware resources (such as CPU, memory, and storage) with other VMs.
+
+Containerization: Containerization is a lightweight virtualization technology that allows multiple isolated user-space instances (containers) to run on a single host machine. Each container shares the host's kernel, but has its own file system and network stack.
+
+Tools for virtualization: There are several tools available for virtualization on Linux, including:
+
+KVM (Kernel-based Virtual Machine): A type 1 hypervisor that is built into the Linux kernel.
+
+QEMU (Quick Emulator): A type 2 hypervisor that can emulate a variety of hardware platforms and architectures.
+
+VirtualBox: A type 2 hypervisor that supports running guest VMs on a variety of operating systems.
+
+Docker: A containerization platform that uses Linux containers to run applications in isolated environments.
+
+To get started with virtualization on Linux, you can try installing and using one of these tools. You can also find many online resources and tutorials to help you learn more about virtualization concepts and techniques.

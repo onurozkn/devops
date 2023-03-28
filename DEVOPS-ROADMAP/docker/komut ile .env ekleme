@@ -1,0 +1,3 @@
+istenilen sunucuya erişim sağladıktan sonra :
+
+docker service update --env-add $eklenmek_istenilen_env $service_ismi

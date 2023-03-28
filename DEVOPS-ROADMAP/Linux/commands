@@ -1,0 +1,68 @@
+BASIC LINUX COMMANDS
+
+cd → Command for navigating between directories and files.
+cd $folder_name (Enters the desired folder)
+cd $folder_path (Provides entry to a file outside the current directory)
+cd .. (Moves to the parent folder)
+
+pwd → Command for displaying the current directory.
+pwd (Outputs the path of the current directory)
+
+touch → Command for creating a file.
+touch $file_name
+
+mkdir → Command for creating a folder.
+mkdir $folder_name
+
+echo → Command for printing to the terminal.
+echo "hello world"
+
+cat → Command for displaying the requested file as output in the terminal.
+cat $file_name.txt
+
+cp → Command for copying files.
+cp $source_folder_path_and_namel $target_folder_path_and_name
+
+mv → Command for moving files.
+mv $source_folder_path_and_namel $target_folder_path_and_name
+
+chmod → Command for changing file permissions.
+sudo chmod 454 $FOLDER_OR_FILE_NAME
+
+chown → Command for giving ownership of files or folders (changing the user).
+sudo chown $USER
+chmod - Command for changing file permissions.
+chown - Command for giving ownership of files or folders.
+
+docker images -a | grep "osb-backend-dev" | awk '{print $1":"$2}'
+Used to select and process the desired columns
+If '{print $1}' is used, only the first column is selected.
+
+Shows the size of the file and the files within it.
+- du file_name
+
+Displays only the size of the selected file.
+- du -sh file_name adding "*" at the end shows the size of the files within the file.
+
+Shows used and available space on the computer.
+- df -h
+
+docker rmi -f $(docker images -f "dangling=true" -q)
+
+To find out which application uses which port number:
+-sudo netstat -lntp
+
+To find out the user of a specific port number:
+-lsof -i tcp:9100
+
+Adding SSL to Nginx:
+-sudo certbot --nginx
+
+To exclude specific files when creating a tar file:
+-sudo tar --exclude 'geoserver/data/*.txt' -czvf geoserver_20230316.tar.gz geoserver/
+
+To determine the size of a specific file and its contents:
+- du "file name"
+
+To determine the size of a specific file:
+- du -sh "file name"

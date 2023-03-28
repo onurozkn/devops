@@ -1,0 +1,28 @@
+Aşağıdaki linkteki komutlar adım adım uygulanır. Dikkat edilmesi gereken nokta firewall açmadan önce portu dışarı açılması gerektiğidir.
+Çünkü port dışarı açılmaz ise ssh ile erişim sağlayamayız. En azından 22 portu dışarı açık olmalıdır. Ondan sonra firewall aktif edilmelidir.
+
+
+https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-18-04
+
+
+
+    - sudo nano /etc/default/ufw
+        - IPV6=yes              -> olmalıdır
+
+    - sudo ufw default deny incoming
+    - sudo ufw default allow outgoing
+            - OUTPUT= Default outgoing policy changed to 'allow'
+                      (be sure to update your rules accordingly)
+
+    - sudo ufw app list
+            - OUTPUT= Available applications:OpenSSH
+    - sudo ufw allow OpenSSH
+            - OUTPUT=   Rule added
+                        Rule added (v6)
+
+    - sudo ufw allow 22
+    - sudo ufw allow http
+    - sudo ufw allow https
+
+    - sudo ufw enable
+

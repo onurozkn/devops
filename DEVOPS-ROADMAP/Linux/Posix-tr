@@ -1,0 +1,84 @@
+POSIX (Portable Operating System Interface — Taşınabilir İşletim Sistemi Arayüzü)
+1.1. POSIX (Portable Operating System Interface — Taşınabilir İşletim Sistemi Arayüzü) Nedir
+POSIX’te bulunan iki kavram ile ne olduğunu açıklamaya açalışırsak; portable(taşınabilir) demek tamamen kaynak kodu ile ilgilidir. Kodun başka bir ortama taşındığında da çalışabilmesidir. Interface (arayüz) kelimesi ise geliştirilen kodun farklı kodlarla iletişim kurması, bir arayüz sağlayan yerdir.
+
+POSIX 1985 yılında Richard Stallman tarafından proje olarak geliştirilmeye başlanmıştır ve 1988 yılında IEEE Std 1003.1–1988 ile resmileşmiştir ve uluslararası standart adı ISO/IEC 9945’dir. Genel olarak Linux işletim sistemleri POSIX standartlarına uymayı hedeflemektedir.
+
+İşletim sisteminin POSIX uyumlu olması geliştiricilerin aynı kodları kullanarak farklı işletim sistemleri için uygulamalar vs. geliştirebilmesine imkan sağlamaktadır. POSIX uyumlu kod yazmanın bu avantajı ile kendinize büyük bir artı katabilirsiniz.
+
+1.1.1. POSIX’e Tam Uyumlu İşletim Sistemleri
+Bu işletim sistemleri tüm POSIX standartlarına uyumludur.
+
+A/UX, AIX, BlagOS, BSD/OS[2], Darwin (Mac OS X), HP-UX, INTEGRITY, IRIX, LynxOS, MINIX, OpenVMS, penOS, QNX, RTEMS (POSIX 1003.1–2003 Profile 52), Solaris und OpenSolaris, UnixWare, velOSity, VxWorks
+
+1.1.2. POSIX’e Geniş Ölçüde Uyumlu İşletim Sistemleri
+Bu işletim sistemleri resmen POSIX uyumlu olmasa da standartlarının büyük bir kısmını desteklemektedir.
+
+BeOS und dessen Open-Source-Nachfolger Haiku, Nucleus RTOS, FreeBSD[3], Linux (çoğu dağıtımlar için bakınız LSB), NetBSD, OpenBSD, DragonFly BSD, PikeOS (Gömülü sistemler için eşzamanlı işletim sistemi. PSE51- ve PSE52 payı seçilebilir.), SkyOS, SuperUX, Syllable, VSTa
+
+1.1.3. POSIX Standartlarını Genişletmeye Uyumlu İşletim Sistemleri
+Bu işletim sistemleri POSIX uyumlu değildir fakat derleyici kütüphaneleri aracılığıyla desteklerler.
+
+Microsoft Windows’un NT çekirdeğinin Microsoft Windows Services for UNIX’le kullanımı POSIX threadleri gibi alt kümeleri mesela “Pthreads-w32“ desteğiyle mümkündür., eCos — POSIX, standart dağıtımın bir parçası olup birçok uygulamaca kullanılmaktadır., Plan 9: APE — ANSI/POSIX Environment, Symbian İS PIPS’le (PIPS Is POSIX on Symbian), AmigaOS/MorphOS, ixemul.library
+
+1.2. Bazı POSIX Standartları
+1.2.1. C API
+Standart C programlama dili kullanımı genişletir.
+
+· Dosya işlemleri: mkdir, dirname, symlink, link, poll(), stat, sync
+
+· Ağ iletişimi: soket()
+
+· Süreçler ve İş Parçacıkları: pipe, fork, execl, wait, sleep, mkfifo, setgpid()
+
+· Bellek yönetimi: mmap, mlock, mprotect, madvise, brk()
+
+1.2.2. CLI Yardımcı Programları (CLI utilities)
+Bu standart, geliştirilen uygulamanın gerektirdiği kabuğa ve yardımcı program işlevselliğine standart düzeyde arabirim tanımlamaktadır.
+
+· cd, ls, echo, cat, rm …
+
+1.2.3. Kabuk Dili (Shell language)
+Kabul dili ortamı programlama dilini desteklemektedir.
+
+ÖR: a=5;
+
+Echo “$a”;
+
+1.2.4. Program Çıkış Durumu (Program exit status)
+ANSI C, başarı için 0 veya EXIT_SUCCESS, başarısızlık için EXIT_FAILURE üretir ve bırakır.
+
+POSIX şunları ekler
+
+· 126: Komut bulundu ancak yürütülemedi
+
+· 127: Komut bulunamadı
+
+· >128: Bir sinyalle sonlandırıldı
+
+· 128+n: Önemli hata sinyali “n”
+
+· 130: Kontrol^C ile program sonlandırıldı
+
+1.2.5. Düzenli İfadeler (Regular expression)
+İki tür vardır. BRE (temel) ve ERE (genişletilmiş). Temel kullanımdan kaldırışmıştır fakat API’ler için tutulmuştur.
+
+Bunlar C API işlevleri ile uygulanır ve CLI yardımcı programlarında kullanılabilir.
+
+ÖR: echo ‘a.1’ | grep -E ‘a.[[:digit:]]’
+
+1.2.6. Dosya Adları (Filenames)
+· / yol ayıracıdır
+
+· NUL kullanılamaz
+
+· . bulunduğu dizin, .. ebeveynidir (bir önceki dizin)
+
+· Yalnızca a-zA-z0–9._- içerebilir
+
+1.2.7. Ortam Değişkenleri (Environment variables)
+Ör: HOME, PATH
+
+1.2.8. Dizin Yapısı (Directory structure)
+Ör: /dev/null, /tmp
+

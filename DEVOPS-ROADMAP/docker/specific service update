@@ -1,0 +1,11 @@
+SPESIFIC SERVICE UPDATE : 
+Belirli bir servisin imajı güncellenmek istenebilir. Sadece KKN ya da sadece DATACLEAN servisi gibi. Bu durumda aşağıdaki komutlar kullanılabilir.
+
+
+NOT: Uygulamalar bizim sunucumuzda servisler ile kontrol edildiği için bu işlemler bizim sunucumuzda gerçekleşebilir. CSB(trafik)’nin sunucusunda docker-compose’lar ile ayağa kalktığı için orada ‘docker-compose.yml’ dosyasında değişiklik yapıp restart edilmelidir.
+
+
+- docker login (user and pass)
+- docker pull +service_image
+- docker service update  - - image $service_image $container_service
+- docker service ls (servisin güncellendiğini listeler)

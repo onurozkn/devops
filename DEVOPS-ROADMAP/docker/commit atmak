@@ -1,0 +1,3 @@
+Container içerisinde değişiklik yaptıktan sonra bu değişikliğin kalıcı olması commit atarak sağlanır.
+
+     -docker commit --change "ENV DEBUG=true" c3f279d17e0a(container ıd )  svendowideit/testimage:version3

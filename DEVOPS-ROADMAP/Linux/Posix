@@ -1,0 +1,79 @@
+POSIX (Portable Operating System Interface) - Portable Operating System Interface is an interface for operating systems. If we explain with two concepts found in POSIX, portable means related to source code. It means that the code can work when moved to another environment. The word interface is the place that provides an interface for the developed code to communicate with different codes.
+
+POSIX was started as a project by Richard Stallman in 1985 and formalized with IEEE Std 1003.1-1988 in 1988 and its international standard name is ISO/IEC 9945. Generally, Linux operating systems aim to comply with POSIX standards.
+
+When the operating system is POSIX compliant, it allows developers to develop applications for different operating systems using the same codes. Writing POSIX compliant code can give you a big plus with this advantage.
+
+1.1.1. Operating Systems Fully Compliant with POSIX
+These operating systems are fully compliant with all POSIX standards.
+
+A/UX, AIX, BlagOS, BSD/OS[2], Darwin (Mac OS X), HP-UX, INTEGRITY, IRIX, LynxOS, MINIX, OpenVMS, penOS, QNX, RTEMS (POSIX 1003.1-2003 Profile 52), Solaris and OpenSolaris, UnixWare, velOSity, VxWorks
+
+1.1.2. Operating Systems Widely Compliant with POSIX
+Although these operating systems are not officially POSIX compliant, they support most of their standards.
+
+BeOS and its open-source successor Haiku, Nucleus RTOS, FreeBSD[3], Linux (see LSB for most distributions), NetBSD, OpenBSD, DragonFly BSD, PikeOS (Concurrent operating system for embedded systems. PSE51- and PSE52 share can be selected.), SkyOS, SuperUX, Syllable, VSTa
+
+1.1.3. Operating Systems Compatible with Expanding POSIX Standards
+These operating systems are not POSIX compliant but support them through compiler libraries.
+
+For example, the use of Microsoft Windows NT kernel with Microsoft Windows Services for UNIX, such as POSIX threads, is possible with support such as "Pthreads-w32". eCos - POSIX, which is part of the standard distribution, is used by many applications. Plan 9: APE - ANSI/POSIX Environment, Symbian OS with PIPS (PIPS Is POSIX on Symbian), AmigaOS/MorphOS, ixemul.library.
+
+1.2. Some POSIX Standards
+1.2.1. C API
+Expands the use of the standard C programming language.
+
+· File operations: mkdir, dirname, symlink, link, poll(), stat, sync
+
+· Network communication: socket()
+
+· Processes and Threads: pipe, fork, execl, wait, sleep, mkfifo, setgid()
+
+· Memory management: mmap, mlock, mprotect, madvise, brk()
+
+1.2.2. CLI Utilities
+This standard defines a standard interface for the shell and utility functionality required by the developed application.
+
+· cd, ls, echo, cat, rm ...
+
+1.2.3. Shell Language
+The shell language environment supports the programming language.
+
+Example: a=5;
+
+Echo "$a";
+
+1.2.4. Program Exit Status
+ANSI C produces 0 or EXIT_SUCCESS for success and EXIT_FAILURE for failure and leaves it.
+
+POSIX adds the following:
+
+· 126: Command found but cannot be executed
+
+· 127: Command not found
+
+· >128: Terminated by a signal
+
+· 128+n: Critical error signal "n"
+
+· 130: Program ended with Control^C
+
+1.2.5. Regular Expressions
+There are two types: BRE (Basic Regular Expression) and ERE (Extended Regular Expression). The basic type is deprecated, but it is still kept for APIs. These are implemented with C API functions and can be used in CLI (Command Line Interface) utilities.
+
+Example: echo 'a.1' | grep -E 'a.[[:digit:]]'
+
+1.2.6. Filenames
+· / is the path separator
+
+· NUL cannot be used
+
+· . refers to the current directory, while .. refers to the parent directory (one level up)
+
+· It can only contain a-zA-z0-9._-
+
+1.2.7. Environment Variables
+Example: HOME, PATH
+
+1.2.8. Directory Structure
+Example: /dev/null, /tmp

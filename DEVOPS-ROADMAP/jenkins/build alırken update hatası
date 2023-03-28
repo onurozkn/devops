@@ -1,0 +1,4 @@
+RUN apt-get update && apt-get install -y python-pip
+jenkins yukarıdaki adımda takılıp hata veriyor ise aşağıdaki komut jenkins dosyasına eklenir.
+
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -

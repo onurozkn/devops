@@ -1,0 +1,2 @@
+Docker buildi alınırken "apt-get update -y" çalışmamasının nedeni VPN'den kaynaklı olabilir. Local bilgisayarda bağlanılan VPN,
+Dışarıya açık olmama ihtimalinden dolayı update işlemini gerçekleştiremeyebilir.
