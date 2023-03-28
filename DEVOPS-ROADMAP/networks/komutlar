@@ -1,0 +1,100 @@
+Network dosyaları
+Network ayarları aşağıdaki dosya ve dizinlerde bulunur.
+
+/etc/sysconfig/network dosyası
+/etc/sysconfig/network-scripts dizini
+/etc/hosts
+/etc/resolv.conf
+/etc/nsswitch.conf
+/etc/services
+Ayar dosyalarının her birisi farklı işlemler için kullanılmaktadır.
+
+
+Network ayarları için network-scripts dizinindeki dosyalar kullanılır.
+
+Network ayarları ifcfg ile başlayan dosyalarda ağ kartına göre eth0, eth1 vb. isimlerle tutulur.
+
+Network ayarlarının içindeki,
+
+DEVICE – Ağ kartının adını,
+
+ONBOOT – Ağın açılışta aktif edilme durumunu,
+
+BOOTPROTO – Network ayarlarının nasıl yapılacağını (static, dhcp, bootp),
+
+IPADDR – IP adresini,
+
+NETMASK – Ağ maskesini,
+
+BROADCAST – Broadcast adresini,
+
+GATEWAY – Gateway adresini belirtir.
+
+Ayrıca MAC adresi, Ağ tipi gibi çeşitli ayarlarda bulunmaktadır.
+
+DHCP kullanarak IP alınmak istendiğinde DEVICE, BOOTPROTO ve ONBOOT ayarlarının yazılması yeterli olacaktır.
+
+Network işlemleri
+Dosyadaki değişikliklerin etkin olabilmesi için network servisinin yeniden başlatılması gerekir.
+
+Ağı durdurmak için stop parametresi kullanılır.
+
+  -service network stop
+Ağı başlatmak için start parametresi kullanılır.
+
+  -service network start
+Ağı yeniden başlatmak için restart veya reload parametresi kullanılır.
+
+  -service network restart
+  -service network reload
+Network bilgisini öğrenme
+
+Ağ bilgilerini öğrenmek için ifconfig komutu kullanılabilir.
+
+  -ifconfig
+Komut çıktı olarak sistemdeki etkin ağ kartlarındaki IP adresi, MAC adresi, Paket vb. bilgileri listeler.
+
+Belirli bir ağ kartının bilgisini almak için parametre olarak ağ kartının adının yazılması yeterli olacaktır.
+
+  -ifconfig eth0
+Komut ile ayrıca ağ kartına ait çeşitli geçici ayarlarda yapılabilir.
+
+  -ifconfig eth0 <IP_Adresi> netmask <Netmask_Adresi> broadcast <Broadcast_Adresi>
+
+Ayarların kalıcı olması için ağ kartına ait ayar dosyasının düzenlenmesi gerekir.
+
+Ağ kartını devre dışı bırakmak için down parametresi kullanılır.
+
+  -ifconfig eth0 down
+  -ifdown eth0
+Ağ kartını aktif etmek için up parametresi kullanılır.
+
+  -ifconfig eth0 up
+  -ifup eth0
+Network ile ilgili bilgi almak için ayrıca ip komutu da kullanılabilir.
+
+Ağ ayarlarını komut penceresinde çeşitli araçlarla görsel arayüz ile yapmak olası hataların önüne geçecektir.
+
+Network komutları
+Network izleme, takibi vb. bilgileri almak için netstat komutu kullanılır.
+
+  -netstat
+Network istatistiklerini almak için i parametresi kullanılır.
+
+  -netstat -i
+Bir adresi kontrol etmek için ping komutu kullanılır.
+
+  -ping <adres>
+Gönderilecek paket sayısı için c parametresi kullanılır.
+
+  -ping -c <adres>
+Bir adrese erişim için kullanılan yol ile ilgili bilgi almak için traceroute komutu kullanılır.
+
+  -traceroute <adres>
+Uzaktaki makineye telnet protokolü ile bağlanmak için telnet komutu kullanılır.
+
+  -telnet <adres>
+Uzaktaki makineye ftp protokolü ile bağlanmak için ftp komutu kullanılır.
+
+  -ftp <adres>
+Komut başlatıldıktan sonra çeşitli işlemler için ftp komutları kullanılır.

@@ -1,0 +1,92 @@
+Network files
+Network settings are located in the following files and directories:
+
+/etc/sysconfig/network file
+/etc/sysconfig/network-scripts directory
+/etc/hosts
+/etc/resolv.conf
+/etc/nsswitch.conf
+/etc/services
+Each of the configuration files is used for different network operations.
+
+The files in the network-scripts directory are used for network configuration.
+
+Network settings are stored in files starting with ifcfg and are named according to the network interface, such as eth0, eth1, etc.
+
+The network settings include:
+
+DEVICE – the name of the network interface
+ONBOOT – whether the network interface should be activated at boot time
+BOOTPROTO – how the network settings should be configured (static, dhcp, bootp)
+IPADDR – the IP address
+NETMASK – the netmask
+BROADCAST – the broadcast address
+GATEWAY – the gateway address
+
+Various settings such as MAC address and network type are also available.
+
+To obtain an IP address using DHCP, it is sufficient to set the DEVICE, BOOTPROTO, and ONBOOT parameters.
+
+Network operations
+The network service must be restarted for changes in the files to take effect.
+
+The stop parameter is used to stop the network.
+
+  -service network stop
+The start parameter is used to start the network.
+
+  -service network start
+The restart or reload parameter is used to restart the network.
+
+  -service network restart
+  -service network reload
+Getting network information
+The ifconfig command can be used to obtain network information.
+
+  -ifconfig
+The command lists the IP address, MAC address, packet information, etc. for the active network interfaces on the system.
+
+To obtain information for a specific network interface, simply specify the name of the interface as a parameter.
+
+  -ifconfig eth0
+The command can also be used to set various temporary settings for a network interface.
+
+  -ifconfig eth0 <IP_Address> netmask <Netmask_Address> broadcast <Broadcast_Address>
+
+To make the settings permanent, the configuration file for the network interface must be edited.
+
+The down parameter is used to disable a network interface.
+
+  -ifconfig eth0 down
+  -ifdown eth0
+The up parameter is used to enable a network interface.
+
+  -ifconfig eth0 up
+  -ifup eth0
+The ip command can also be used to obtain network information.
+
+Using graphical tools in the command prompt to configure network settings can help prevent errors.
+
+Network commands
+The netstat command is used to monitor and track network information.
+
+  -netstat
+The -i parameter is used to obtain network statistics.
+
+  -netstat -i
+The ping command is used to check connectivity to an address.
+
+  -ping <address>
+The -c parameter is used to specify the number of packets to send.
+
+  -ping -c <address>
+The traceroute command is used to obtain information about the path used to reach a remote machine.
+
+  -traceroute <address>
+The telnet command is used to connect to a remote machine using the telnet protocol.
+
+  -telnet <address>
+The ftp command is used to connect to a remote machine using the ftp protocol.
+
+  -ftp <address>
+After the command is started, various ftp commands are used for different operations.
