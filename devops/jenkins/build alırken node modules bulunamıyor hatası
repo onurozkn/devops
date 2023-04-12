@@ -1,0 +1,2 @@
+Bu hata büyük ihtimalle dockerfile'daki node versiyonundan kaynaknaklanıyordur.
+Node versiyonunu değiştirip deneyebilirsiniz.
