@@ -59,6 +59,10 @@ hangi port numarısnı hangi uygulama kullanıyor öğrenmek için :
 	
 spesifik port numarasının kullanıcısını öğrenmek için:
         -lsof -i tcp:9100
+	
+kullanılan portu öldürmek için:
+        - sudo lsof -i TCP:<port number>
+	- sudo kill -9 <pid number>
 
 nginx e ssl eklemek için :
         -sudo certbot --nginx
