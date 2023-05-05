@@ -1,5 +1,11 @@
 Docker swarm kullanarak iki ayarı sunucuya aynı uygulamayı dağıtmak:
   -Öncelikle bunu yapabilmek için bu bilgisayarlar birbirlerine swarm ile bağlı olmalıdır.
+  -Bu iki bilgisayar swarm ile bağlanırken scriptin içinde "--constraint node.labels.backend==yes" gibi bir label eklenmelidir.
+  -Servisler başlatılamadan önce "docker node update --label-add backend=yes "node_ıd"" komutu girilmelidir
+  -service replicakaları için aşağıdaki örnekleri kullanabilirsiniz
+      -örnek: docker node update --label-add region=east yswe2dm4c5fdgtsrli1e8ya5l
+             --replicas=6 \
+             --replicas-max-per-node=3 \   
   -Kurulacak olan uygulamanın mount edilecek yerleri tek bir dosya olmalıdır bunun için ubuntu da NFS client configuration kullandım
      bunun için gerekli döküman:https://ubuntu.com/server/docs/service-nfs
      
@@ -19,6 +25,3 @@ Docker swarm kullanarak iki ayarı sunucuya aynı uygulamayı dağıtmak:
      -sudo mount $host_name:/"entegre edilmesini istediğiniz dizin" /example
      -/etc/fstab içine girilir
      -$host_name:/example /"entegre edilmesini istediğiniz dizin" nfs defaults 0 0
-
-
-
