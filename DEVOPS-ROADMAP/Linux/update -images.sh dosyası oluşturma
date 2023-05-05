@@ -1,0 +1,27 @@
+#!/bin/bash
+export VERSION=$1
+docker login
+
+
+GIS_IMG='$image_ismi:'${VERSION}
+PANEL_IMG='$image_ismi:'${VERSION}
+APPEAL_IMG='$image_ismi:'${VERSION}
+BACKEND_IMG='$image_ismi:'${VERSION}
+LOGGER_IMG='$image_ismi:'${VERSION}
+
+docker pull ${GIS_IMG}
+docker pull ${PANEL_IMG}
+docker pull ${APPEAL_IMG}
+docker pull ${BACKEND_IMG}
+docker pull ${LOGGER_IMG}
+
+docker service update --image ${GIS_IMG} osb_gis
+docker service update --image ${PANEL_IMG} osb_panel
+docker service update --image ${APPEAL_IMG} osb_appeal
+docker service update --image ${BACKEND_IMG} osb_backend
+docker service update --image ${LOGGER_IMG} osb_backend_notify
+
+
+kaydedildikten sonra 
+chmod +x services_update.sh komutu ile yetkilendirilir
+./services_update.sh ile çalıştırılır

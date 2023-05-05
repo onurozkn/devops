@@ -1,0 +1,18 @@
+__Sunucular arası port testi__
+İki sunucu arasında portların açık olup olmadığını test etmek için birsi server, diğeri client olarak varsayılır.
+Server olan üzerin port dinleme (listen) yapılır
+UDP port için:
+
+sudo nc -luk <port_no>
+
+TCP port için:
+
+sudo nc -l <portno>
+
+Client üzeinde ise UDP için:
+
+nc -uv <server_IP> <port_no)
+
+TCP için:
+
+telnet <server_IP> <port_no>

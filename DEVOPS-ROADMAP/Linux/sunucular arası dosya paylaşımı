@@ -1,0 +1,19 @@
+  -Kurulacak olan uygulamanın mount edilecek yerleri tek bir dosya olmalıdır bunun için ubuntu da NFS client configuration kullandım
+     bunun için gerekli döküman:https://ubuntu.com/server/docs/service-nfs
+     
+     PAYLAŞILACAK DOSYANIN OLDUĞU BİLGİSAYAR
+     -sudo apt install nfs-kernel-server
+     -daha sonra /etc/exports dosyasına girilir 
+     -/example $host_name(rw,async,subtree_check)
+     -sudo exportfs -a
+     -df- h yapılarak paylaşılan dosya görülebilir olmalıdır.
+     -sudo systemctl start nfs-kernel-server.service
+
+
+
+     PAYLAŞILAN DOSYAYI KULLANACAK OLAN BİLGİSAYAR
+     -sudo apt install nfs-common
+     -paylaşılacak olan dosya = /example
+     -sudo mount $host_name:/"entegre edilmesini istediğiniz dizin" /example
+     -/etc/fstab içine girilir
+     -$host_name:/example /"entegre edilmesini istediğiniz dizin" nfs defaults 0 0
