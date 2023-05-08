@@ -1,0 +1,3 @@
+count_over_time(container_last_seen{container_label_com_docker_stack_namespace="trafik", name=~".*trafik.*"}[1m])
+
+bu komut trafik adına benzer olan bütün containerların son 1 dk sını sayar. 
