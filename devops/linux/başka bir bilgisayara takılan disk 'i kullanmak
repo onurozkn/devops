@@ -1,0 +1,3 @@
+Öncelikle hedef bilgisayara bağlanılır.
+fdisk -l komutu ile takılan disk bulunur
+daha sonra sudo mount ile istenilen konuma mount edilir
