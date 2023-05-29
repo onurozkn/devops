@@ -75,3 +75,6 @@ spesifik bir dosyanın içerisindekilerle birlikte boyutunu öğrenmek için:
 
 spesifik bir dosyanın boyutunu öğrenmek için:
         - du -sh ""dosya adı""
+
+watch ile belirli zaman aralıklarında istediğimiz komutun sonuçlarını izleyebiliriz
+        - watch -n 10 du -sh "dosya_konumu"      ----> buradaki komut 10 saniyede bir belirtilen dosyanın boyutunu izler.
