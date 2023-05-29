@@ -1,0 +1,77 @@
+BASIC LINUX COMMAND
+
+
+cd 			→ Dizinler & Dosyalar arası gezinme komutu
+cd $folder_name	(istenilen foldera girer)
+cd $folder_path		(Bulunduzuğu dizin haricindeki bir dosya giriş sağlar)
+cd ..			(Bir üst folders geçer)
+
+
+pwd			→ Bulunduğun dizini gösterme komutu
+pwd		(Çıktı olarak o anki dizinin yolunu verir.)
+
+touch			→ File oluşturur.
+touch $file_name 
+
+mkdir			→ Dosya oluşturur.
+mkdir $folder_name
+
+
+echo 			→ Terminale istenilen şeyi yazdırma komutu.
+echo “hello world”
+
+cat			→ İstenilen dosyayı çıktı olarak terminalde gösterme komutu.
+cat  $file_name.txt
+
+
+cp 			→ Dosya kopyalama komutu
+cp $source_folder_path_and_namel     $target_folder_path_and_name
+
+mv 			→ Dosya taşıma komutu
+mv $source_folder_path_and_namel     $target_folder_path_and_name
+
+chmod 			→ Dosya izinlerini değiştirme komutu
+sudo chmod 454 $FOLDER_OR_FILE_NAME
+
+chown  			→ Dosya veya klasörlerin sahipliğini (user’ını değiştirme) verme komutu
+sudo chown $USER
+chmod - Dosya izinlerini değiştirme komutu
+chown - Dosya veya klasörlerin sahipliğini verme komutu
+
+docker images -a | grep "osb-backend-dev" | awk '{print $1":"$2}'
+stunlarını seçip işlem yapabilmek için kulanılır 
+'{print $1}' bu şekilde kullanılırsa sadece 1. stunu seçer
+
+Dosyanın ve içindeki dosyaların boyutlarını gösterir.
+	- du dosya_adı
+
+Sadece seçilen dosyanın boyutunu gösterir.
+	- du -sh dosya_adı sonuna "*" koyulursa dosyanın içindeki dosyaların boyularını gösterir.
+
+Bilgisayardaki kullanılan ve boş alanları gösterir
+	- df -h
+	
+docker rmi -f $(docker images -f "dangling=true" -q)
+
+
+hangi port numarısnı hangi uygulama kullanıyor öğrenmek için : 
+        -sudo netstat -lntp
+	
+spesifik port numarasının kullanıcısını öğrenmek için:
+        -lsof -i tcp:9100
+	
+kullanılan portu öldürmek için:
+        - sudo lsof -i TCP:<port number>
+	- sudo kill -9 <pid number>
+
+nginx e ssl eklemek için :
+        -sudo certbot --nginx
+	
+tar yaparken belli dosyaları dahil etmemek için:
+        -sudo tar --exclude 'geoserver/data/*.txt' -czvf geoserver_20230316.tar.gz geoserver/
+
+spesifik bir dosyanın içerisindekilerle birlikte boyutunu öğrenmek için:
+        - du ""dosya adı"
+
+spesifik bir dosyanın boyutunu öğrenmek için:
+        - du -sh ""dosya adı""
