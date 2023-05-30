@@ -78,3 +78,7 @@ spesifik bir dosyanın boyutunu öğrenmek için:
 
 watch ile belirli zaman aralıklarında istediğimiz komutun sonuçlarını izleyebiliriz
         - watch -n 10 du -sh "dosya_konumu"      ----> buradaki komut 10 saniyede bir belirtilen dosyanın boyutunu izler.
+	
+rsync ve nohub ile dosya kopyalama işlemi
+
+        - nohup rsync -avW -r -e "ssh -p 22" /mnt/ssddata/DOCKER_MOUNTS/pc_postgis_202201/* admin01@172.22.150.30:/gtbys_data/docker_volumes/pc_postgis/ &
