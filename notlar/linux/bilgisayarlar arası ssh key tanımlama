@@ -1,0 +1,5 @@
+bir bilgisayarın diğerininin şifresini sormadan bağlanabilmesi gerekirse:
+
+ -bağlanılacak olan bilgisayarın /root/.ssh/ dizinin altına girilir
+ -burada id_rsa dosyasının içerisi kopyalanır (dosya yoksa ssh-keygen ile oluşturulur)
+ -bağlanan bilgisarın aynı dizini içerisindeki authorized_keys içerisine yapıştırılır eğer yoksa oluşturulur.
