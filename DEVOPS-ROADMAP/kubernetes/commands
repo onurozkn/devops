@@ -1,0 +1,43 @@
+To bring the pods:
+ -kubectl get pods
+
+To bring the all:
+ -kubectl get all
+
+Create a single pod in 1.18+
+
+ -kubectl run nginx --image nginx
+
+Create a single pod with a custom command in 1.18+
+
+ -kubectl run pingpong --image alpine --command -- ping 1.1.1.1
+
+Create a deployment in 1.18+
+
+ -kubectl create deployment nginx --image nginx
+
+Create a deployment with a custom command in 1.18+
+
+ -kubectl create deployment pingpong --image alpine -- ping 1.1.1.1
+
+Notice the double dash -- which separates the kubectl command options from the COMMAND you want to override when starting the containers.
+
+Also notice that run requires the --command -- <cmd> <arg> while the create deployment just needs -- <cmd> <arg> at the end.
+
+For more info on the create deployment options, check out the help at kubectl create deployment --help
+
+ create more replicas:
+  -kubectl scale deploy my-apache --replicas 2
+
+get container logs: 
+  - kubectl logs doploy my-apache --follow --tail 1
+
+get a bunch of details about object:
+  - kubectl describe pod/my-apache-pod_ıd
+
+watch command :
+  - kubectl get pods -w
+
+
+
+
