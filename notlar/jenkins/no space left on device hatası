@@ -1,0 +1,2 @@
+jenkins sunucusunda yer kalmadığı için bu hatayı veriyor 
+gereksiz docker imagelerini silmek için :    docker images -f dangling=true -q | xargs docker rmi
