@@ -1,5 +1,8 @@
 db leri listelemek için:
     - \l
 
+herhangi bir db ye geçiş yapmak için:
+    - \c "db_name"
+
 
 
