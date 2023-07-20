@@ -85,3 +85,6 @@ rsync ve nohub ile dosya kopyalama işlemi: => rsync kopyalama işlemi kopsa bil
 
 gereksiz docker imagelerini silmek için : 
         - docker images -f dangling=true -q | xargs docker rmi
+
+bir json.log dosyasının içini silmek için:
+        - echo "" < "dosyaismi.json.log"
