@@ -4,5 +4,7 @@ db leri listelemek için:
 herhangi bir db ye geçiş yapmak için:
     - \c "db_name"
 
-
+versiyon öğrenmek için:
+    - select version();
+    - select extansion-name_version();
 
