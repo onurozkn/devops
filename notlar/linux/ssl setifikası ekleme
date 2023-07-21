@@ -12,3 +12,11 @@
 #        listen 443 ssl;
 #        ssl_certificate /etc/ssl/csb.gov.tr/csb.gov.tr.crt;
 #        ssl_certificate_key /etc/ssl/csb.gov.tr/csb.gov.tr.key;
+
+
+
+
+
+gerekli dökümanlar: 
+-https://bobcares.com/blog/convert-pfx-to-crt-key-files/
+-https://docs.nginx.com/nginx/admin-guide/security-controls/terminating-ssl-http/
