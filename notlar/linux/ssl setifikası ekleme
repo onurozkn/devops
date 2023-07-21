@@ -1,0 +1,13 @@
+1- Öncelikle alınan pfx dosyası pem dosyasına çevirilir.
+     - openssl pkcs12 -in csb.gov.tr_2023_teslimedilen.pfx -out csb.gov.tr.pem -clcerts 
+     veya 
+     -openssl pkcs12 -in csb.gov.tr_2023_teslimedilen.pfx -out csb.gov.tr.cer -nodes
+2- /etc/ssl dosyasının içinde mkdir ile bir dosya oluşturup içine çevirdiğimiz .pem veya .cer dosyalarını atalım.
+
+3- dosyaların içindeki private key kısmını .key uzantılı bir dosya oluşturup içine atalım,
+   begin certificate kısmını .pem uzantılı bir dosya oluşturup içine atalım.
+
+4- nginx dosyasının içine aşağıdaki şekilde ekleme yapılır (dosya dizinleri adım 3 de oluşturduğumuz ssl dosyasının dizinleri olmalıdır.)
+#        listen 443 ssl;
+#        ssl_certificate /etc/ssl/csb.gov.tr/csb.gov.tr.pem
+#        ssl_certificate_key /etc/ssl/csb.gov.tr/csb.gov.tr.key
