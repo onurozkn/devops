@@ -1,0 +1,5 @@
+dump almak için: 
+    - pg_dump --format=c -c -v -d db_name -f dumname.dump
+
+alınan dump ı açmak için:
+    - pg_Restore --format=c -c -v -d db_name dumbname.dump
