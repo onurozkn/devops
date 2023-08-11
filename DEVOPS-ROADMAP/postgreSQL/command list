@@ -1,0 +1,11 @@
+To list databases:
+
+\l
+To switch to any database:
+
+\c "db_name"
+To learn the version:
+
+select version();
+select extension_name_version();
+

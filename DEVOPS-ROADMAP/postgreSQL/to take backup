@@ -1,0 +1,6 @@
+To take a dump:
+
+pg_dump --format=c -c -v -d db_name -f dumpname.dump
+To restore the dumped file:
+
+pg_restore --format=c -c -v -d db_name dumpname.dump
