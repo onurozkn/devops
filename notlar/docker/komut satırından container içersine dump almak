@@ -1,1 +1,3 @@
 docker exec -ti --user postgres trafik_appdb bash -c 'cd ~/data && pg_dump -U trafik --format=c -c -v -d trafik -f trafikdb.dump'
+ dump ı açmak için : 
+    - pg_restore --format=c -c -v -d trafik trafikdb.dump
