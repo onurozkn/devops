@@ -88,3 +88,6 @@ gereksiz docker imagelerini silmek için :
 
 bir json.log dosyasının içini silmek için:
         - echo "" < "dosyaismi.json.log"
+
+ssh ile belirli bir port üzerinden bağlanabilrmek için ;
+        - ssh -p <port number>
