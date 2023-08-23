@@ -1,0 +1,2 @@
+ssh -L 6436:localhost:5436 ankageo@demo.atlantgis.com
+bu komut karşı bilgisayarın ssh bilgilerini kendi local bilgisayarımızdaki 6436 portuna taşır
