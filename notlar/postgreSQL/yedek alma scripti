@@ -1,0 +1,26 @@
+FILE_NAME=$(date +%Y%m%d-%H%M%S)
+NIIMGIS_ADMIN_DUMP_FILE='niimgis_cloud_admin_db_'${FILE_NAME}'.dump'
+NIIMGIS_DATA_DUMP_FILE='niimgis_cloud_data_db_'${FILE_NAME}'.dump'
+
+NIIMGIS_ADMIN_DUMP_PATH='/data/niimgis/appdb_backup/'${NIIMGIS_ADMIN_DUMP_FILE}
+NIIMGIS_DATA_DUMP_PATH='/data/niimgis/appdb_backup/'${NIIMGIS_DATA_DUMP_FILE}
+APPDB_CONTAINER_ID=$(docker ps -a -f name=niimgis_appdb -f status=running -q)
+
+echo ${NIIMGIS_ADMIN_DUMP_PATH}
+echo ${NIIMGIS_DATA_DUMP_PATH}
+
+echo 'NIIMGIS admin database backup started...'
+docker exec -t --user postgres ${APPDB_CONTAINER_ID} bash -c \
+  'pg_dump --format=c -c -d cloud_admin -f ~/data/niimgis_cloud_admin_db.dump' \
+  || { echo 'NIIMGIS admin database backup failed !!!'; exit 1; }
+echo 'NIIMGIS admin database backup finished successfully!'
+docker cp ${APPDB_CONTAINER_ID}:/var/lib/postgresql/data/niimgis_cloud_admin_db.dump ${NIIMGIS_ADMIN_DUMP_PATH}
+
+echo 'NIIMGIS data database backup started...'
+docker exec -t --user postgres ${APPDB_CONTAINER_ID} bash -c \
+  'pg_dump --format=c -c -d cloud_data -f ~/data/niimgis_cloud_data_db.dump' \
+  || { echo 'NIIMGIS data database backup failed !!!'; exit 1; }
+echo 'NIIMGIS  data database backup finished successfully!'
+docker cp ${APPDB_CONTAINER_ID}:/var/lib/postgresql/data/niimgis_cloud_data_db.dump ${NIIMGIS_DATA_DUMP_PATH}
+
+cd /data/niimgis/appdb_backup/ && ls -1tr | head -n -120 | xargs -d '\n' rm -f --
