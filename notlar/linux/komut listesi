@@ -91,3 +91,6 @@ bir json.log dosyasının içini silmek için:
 
 ssh ile belirli bir port üzerinden bağlanabilrmek için ;
         - ssh -p <port number>
+
+sunucuda belirli bir dosyanın içerisindeki bilgiyi aramak isityorsanız:
+        - sudo grep -i -r
