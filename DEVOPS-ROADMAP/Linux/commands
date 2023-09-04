@@ -66,3 +66,6 @@ To determine the size of a specific file and its contents:
 
 To determine the size of a specific file:
 - du -sh "file name"
+
+If you want to search for specific information within a file on the server, you can use:
+- sudo grep -i -r
