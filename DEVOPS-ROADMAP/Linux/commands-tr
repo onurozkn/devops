@@ -79,3 +79,12 @@ rsync ve nohub ile dosya kopyalama işlemi: => rsync kopyalama işlemi kopsa bil
 
 gereksiz docker imagelerini silmek için : 
         - docker images -f dangling=true -q | xargs docker rmi
+
+bir json.log dosyasının içini silmek için:
+        - echo "" < "dosyaismi.json.log"
+
+ssh ile belirli bir port üzerinden bağlanabilrmek için ;
+        - ssh -p <port number>
+
+sunucuda belirli bir dosyanın içerisindeki bilgiyi aramak isityorsanız:
+        - sudo grep -i -r
