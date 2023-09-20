@@ -94,3 +94,6 @@ ssh ile belirli bir port üzerinden bağlanabilrmek için ;
 
 sunucuda belirli bir dosyanın içerisindeki bilgiyi aramak isityorsanız:
         - sudo grep -i -r
+
+belli bir dizinde belirli bir ifadeyi aramak için
+        - sed -i 's/osb_backend/meydip_backend/g' $(sudo grep -i -r 'osb_backend' ./styles --exclude "*.bak*" -l) 
