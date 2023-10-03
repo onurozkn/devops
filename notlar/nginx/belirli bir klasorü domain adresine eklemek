@@ -1,0 +1,5 @@
+nginx.conf dosyasında aşağıdaki örnekteki gibi ekleme yapabilirsiniz.
+        
+        location /az/ {
+                alias /media/elasmap/4tb/az/;
+                autoindex on;
