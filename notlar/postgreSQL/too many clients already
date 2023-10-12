@@ -1,6 +1,10 @@
 You can resolve this error following link:
    https://stackoverflow.com/questions/2757549/org-postgresql-util-psqlexception-fatal-sorry-too-many-clients-already
 
+First find your postgresql.conf file
+If you don't know where it is, query the database with the sql: SHOW config_file;
+Mine is in: /var/lib/pgsql/data/postgresql.conf
+Login as root and edit that file.
 
 You should change these parameters according to your needs.
 max_connections = 200
