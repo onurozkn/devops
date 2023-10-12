@@ -1,1 +1,8 @@
+For example, if you want to create a Docker container that includes a database and you need to delete databases within that container, you can follow the steps below:
+      - Firstly, enter into the Docker container( docker exec -ti )
+      - You should type 'psql' and then follow the steps below:
+         drop database db_name1 with (FORCE);
+         drop database db_name2 with (FORCE);
+         create database new_db1 TEMPLATE=template0;
+         create database new_db1 TEMPLATE=template0;
 
