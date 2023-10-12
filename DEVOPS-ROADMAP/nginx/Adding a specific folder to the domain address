@@ -1,0 +1,9 @@
+You should add the following into your nginx.conf file
+        
+        location /az/ {
+                alias /media/elasmap/4tb/az/;
+                autoindex on;
+
+ after save conf file and restart nginx
+     - nginx -t
+     - nginx -s reload
