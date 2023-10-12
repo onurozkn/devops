@@ -1,0 +1,7 @@
+örneğin dolu bir iamgeden bir container ayağa kaldırdınız ve içini boşatmanız gerek.
+     - Öncelikle container içine girilir (docker exec ile)
+     - Container içersinde psql komutu girilir ve aşşağıda ki komutlar yazılır:
+         drop database db_name1 with (FORCE);
+         drop database db_name2 with (FORCE);
+         create database new_db1 TEMPLATE=template0;
+         create database new_db1 TEMPLATE=template0;
