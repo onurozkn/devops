@@ -97,3 +97,7 @@ sunucuda belirli bir dosyanın içerisindeki bilgiyi aramak isityorsanız:
 
 belli bir dizinde belirli bir ifadeyi aramak için
         - sed -i 's/osb_backend/meydip_backend/g' $(sudo grep -i -r 'osb_backend' ./styles --exclude "*.bak*" -l) 
+
+terminal üzerinden kolayca speedtest yapabilmek için:
+        - sudo apt install speedtest-cli
+        - speedtest-cli --secure
