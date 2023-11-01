@@ -1,0 +1,8 @@
+cı/cd süreçlerinde aynı image ismi altında farklı tag oluşturulup güncellemeler yapılıp silinmiyor ise sunucuda çok fazla yer kaplamaya sebeb olur.
+bu sorunu çözmeyi "docker system prune" gibi komutlarla düzeltemeseniz şağıdaki örneği deneyebilirsiniz.
+
+enson yüklenen tag örnek olarak development_363 ise aşşağıdaki gibi bir komut daha eski tagleri sıralayacaktır.
+   -docker images --format '{{.Repository}}:{{.Tag}}' | grep 'development_' | sort -V | awk -F_ 'int(substr($2,1,length($2))) < 363'
+
+daha sonra listelenen imageleri bir .txt dosyasına atıyoruz ve aşağıdaki komutu uyguluyoruz
+   -while read image; do docker rmi $image; done < images_to_remove.txt
