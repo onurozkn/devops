@@ -1,0 +1,12 @@
+#!/bin/bash
+# komutlari cagir
+
+DEV_TAG=$1
+MIN_VERSION=$2
+
+docker images --format '{{.Repository}}:{{.Tag}}' | grep $DEV_TAG | sort -V | awk -v minv=$MIN_VERSION -F_ 'int(substr($2,1,length($2))) < minv' > images_to_remove.txt
+
+while read image; do docker rmi $image; done < images_to_remove.txt
+
+# dosyayı sil
+rm images_to_remove.txt
