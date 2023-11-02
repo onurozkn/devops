@@ -10,3 +10,7 @@ while read image; do docker rmi $image; done < images_to_remove.txt
 
 # dosyayı sil
 rm images_to_remove.txt
+
+
+Bu yeni versionda scripte iki parametre girebilirsiniz. İlk parametre development filtresini yerine getirecek, ikinci parametre ise versiyon numarasını kontrol edecek.
+Örneğin, script'i ./script.sh development 363 şeklinde çalıştırabilirsiniz
