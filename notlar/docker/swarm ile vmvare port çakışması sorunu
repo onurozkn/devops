@@ -1,0 +1,3 @@
+Dockeer swarm vm makinesine kurulurken default portu sorun çıkartmaktadır bunun için aşşağıdaki komutu kullanabilirsiniz.
+
+   - docker swarm init --data-path-port=9789  --advertise-addr "ip_adres"
