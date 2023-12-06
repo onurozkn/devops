@@ -1,0 +1,7 @@
+Dosyayı tarlamak için:
+
+     -sudo tar -czpvf tarfile.tar.gz tarfile
+
+Tarlanan dosyayı açmak için:
+
+     -sudo tar -xzpvf tarfile.tar.gz 
