@@ -1,0 +1,5 @@
+Eğer bu hatayı alıyorsanız nginx conf dosyanızda aşağıdaki komutu eklemeniz yeterli olacaktır:
+
+  - large_client_header_buffers 16 128k;
+
+Eğer LAN üzerinde iseniz dışarıya açılan sunucudaki conf dosyanızda bu işlemi yapmanız gerekiyor.
