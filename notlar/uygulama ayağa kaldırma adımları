@@ -6,6 +6,8 @@
 
 
 2-) İçerisini update ettikten sonra docker, docker-compose, nginx yüklenmelidir.
+    Docker yüklemek için aşağıdaki linki kullanmanız yeni ubuntu versiyonlarında hatalarla karşılaşmamanız için daha doğru olur. 
+      - https://docs.docker.com/engine/install/ubuntu/
 
 
 sudo apt-get install docker.io
