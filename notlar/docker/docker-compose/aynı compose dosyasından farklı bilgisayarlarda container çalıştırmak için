@@ -1,0 +1,109 @@
+servislere çalışacağı farklı sunucularda çalışmasını istediğimiz zamanlarda "contraints" komutunu kullanabiliriz.
+
+Aşağıdaki superset örneğinde database(db) servisini başka bir sunucuda çalıştırdım: 
+
+x-superset-image: &superset-image geoanka/superset_311:1
+x-superset-depends-on: &superset-depends-on
+  - db
+  - redis
+x-superset-volumes:
+  &superset-volumes # /app/pythonpath_docker will be appended to the PYTHONPATH in the final container
+  - ./docker:/app/docker
+  - /data/datalab/superset_home:/app/superset_home
+
+version: "3.9"
+services:
+  redis:
+    image: redis:7
+    hostname: superset_cache
+    deploy:
+      placement:
+        constraints: [node.hostname == SRV-IS-ZEKASI-APP]   ###burada redis servisinin çalışacağı sunucunun hostname'ini vererek belirttim
+    #container_name: superset_cache
+    #restart: unless-stopped
+    volumes:
+      - /data/datalab/redis:/data
+
+  db:
+    env_file: docker/.env-non-dev
+    image: geoanka/postgis_pgagent_tr-utf8:15.3
+    #container_name: superset_db
+    hostname: superset_db
+    deploy:
+      placement:
+        constraints: [node.hostname == SRV-IS-ZEKASI-DB]
+    #restart: unless-stopped
+    stop_signal: SIGINT
+    stop_grace_period: 120s
+    volumes:
+      - /mnt/data/datalab/pg_data:/var/lib/postgresql/data
+      - ./docker/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - 4032:5432
+
+  superset:
+    env_file: docker/.env-non-dev
+    image: *superset-image
+    #container_name: superset_app
+    hostname: superset_app
+    deploy:
+      placement:
+        constraints: [node.hostname == SRV-IS-ZEKASI-APP]
+    command: ["/app/docker/docker-bootstrap.sh", "app-gunicorn"]
+    user: "root"
+    #restart: unless-stopped
+    ports:
+      - 8088:8088
+    depends_on: *superset-depends-on
+    volumes: *superset-volumes
+
+  superset-init:
+    image: *superset-image
+    #container_name: superset_init
+    hostname: superset_init
+    deploy:
+      placement:
+        constraints: [node.hostname == SRV-IS-ZEKASI-APP]
+    command: ["/app/docker/docker-init.sh"]
+    env_file: docker/.env-non-dev
+    depends_on: *superset-depends-on
+    user: "root"
+    volumes: *superset-volumes
+    healthcheck:
+      disable: true
+
+  superset-worker:
+    image: *superset-image
+    #container_name: superset_worker
+    hostname: superset_worker
+    deploy:
+      placement:
+        constraints: [node.hostname == SRV-IS-ZEKASI-APP]
+    command: ["/app/docker/docker-bootstrap.sh", "worker"]
+    env_file: docker/.env-non-dev
+    #restart: unless-stopped
+    depends_on: *superset-depends-on
+    user: "root"
+    volumes: *superset-volumes
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "celery -A superset.tasks.celery_app:app inspect ping -d celery@$$HOSTNAME",
+        ]
+
+  superset-worker-beat:
+    image: *superset-image
+    #container_name: superset_worker_beat
+    hostname: superset_worker_beat
+    deploy:
+      placement:
+        constraints: [node.hostname == SRV-IS-ZEKASI-APP]
+    command: ["/app/docker/docker-bootstrap.sh", "beat"]
+    env_file: docker/.env-non-dev
+    #restart: unless-stopped
+    depends_on: *superset-depends-on
+    user: "root"
+    volumes: *superset-volumes
+    healthcheck:
+      disable: true
