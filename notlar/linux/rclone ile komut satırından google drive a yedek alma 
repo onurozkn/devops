@@ -80,6 +80,7 @@ d) Delete this remote
 y/e/d> y
 Artık gdrive adında bir rclone uzağınız var ve Google Drive hesabınıza bağlı.
 
+
 3. Otomatik Yedekleme (Cron Job ile)
 rclone ile Google Drive'a otomatik yedeklemeyi ayarlamak için Linux'ta cron (zamanlanmış görevler için bir hizmet) kullanabilirsiniz.
 
