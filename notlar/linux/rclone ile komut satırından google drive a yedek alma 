@@ -1,0 +1,129 @@
+Bu notlar, rclone'u kurmaktan Google Drive'a otomatik yedeklemeyi ayarlamaya kadar olan adımları içermektedir. Bu rehber, komut satırı arayüzüne aşina olan kullanıcılar için hazırlanmıştır.
+
+1. rclone Kurulumu
+rclone'u kurmak için aşağıdaki adımları takip edin:
+
+Kurulum Betiğini İndirin ve Çalıştırın:
+Çoğu Linux dağıtımında veya macOS'ta rclone'u kurmanın en kolay yolu resmi kurulum betiğini kullanmaktır. Terminalinizi açın ve aşağıdaki komutu çalıştırın:
+
+Bash
+
+curl https://rclone.org/install.sh | sudo bash
+Bu komut, rclone'u indirir, doğrular ve sisteminize kurar. sudo kullanmanız gerekecektir, çünkü rclone genellikle sistem genelinde kurulur.
+
+Kurulumu Doğrulayın:
+Kurulumdan sonra rclone'un doğru bir şekilde kurulup kurulmadığını kontrol etmek için sürüm bilgisini görüntüleyebilirsiniz:
+
+Bash
+
+rclone version
+Bu komut, rclone'un yüklü sürümünü ve diğer ilgili bilgileri göstermelidir.
+
+2. rclone Yapılandırması (Google Drive İçin)
+rclone'u Google Drive ile kullanmak için bir "uzak" (remote) yapılandırmanız gerekir. Bu adım, rclone'un Google Drive hesabınıza erişmesine izin verir.
+
+Yapılandırma Sihirbazını Başlatın:
+
+Bash
+
+rclone config
+Bu komut, rclone yapılandırma sihirbazını başlatır.
+
+Yeni Uzak Oluşturma:
+Karşınıza çıkan menüde n (new remote) yazıp Enter'a basın.
+
+Uzak Adı Belirleme:
+Uzağınıza anlamlı bir ad verin, örneğin gdrive. Bu adı daha sonra yedekleme komutlarınızda kullanacaksınız.
+
+name> gdrive
+Depolama Tipi Seçimi:
+Karşınıza çıkan listeden Google Drive'ı temsil eden numarayı bulun ve girin. Genellikle bu 13 veya 14 civarında bir numara olacaktır. (Listede kaydırma yaparak doğru numarayı bulduğunuzdan emin olun.)
+
+Storage> 13  (veya uygun numara)
+Client ID ve Client Secret:
+Bu adımlarda genellikle boş bırakıp Enter tuşuna basabilirsiniz. rclone, varsayılan genel Client ID'leri kullanacaktır. Eğer kendi özel API anahtarlarınızı kullanmak istiyorsanız, Google Cloud Console'da bir proje oluşturmanız ve ilgili kimlik bilgilerini almanız gerekir. Ancak otomatik yedeklemeler için genellikle varsayılanlar yeterlidir.
+
+client_id> (boş bırakın)
+client_secret> (boş bırakın)
+Kapsam Seçimi:
+Google Drive erişim tipi için 1 (Full access to all files, excluding Application Data folder) seçeneğini seçmeniz önerilir. Bu, rclone'un tüm dosyalarınıza tam erişime sahip olmasını sağlar.
+
+scope> 1
+Root Folder ID:
+Bu adımı boş bırakıp Enter'a basabilirsiniz. Eğer yedeklemelerinizi Google Drive'da belirli bir klasöre yapmak istiyorsanız, o klasörün ID'sini buraya girebilirsiniz. Aksi takdirde, rclone otomatik olarak kök dizine yedekleyecektir.
+
+root_folder_id> (boş bırakın)
+Service Account File:
+Bu adımı da boş bırakıp Enter'a basabilirsiniz. Hizmet hesabı dosyaları genellikle sunucu tarafı veya otomatize edilmiş işlemler için kullanılır.
+
+service_account_file> (boş bırakın)
+Gelişmiş Ayarlar:
+y (yes) ile gelişmiş ayarlar menüsüne girin. Burada herhangi bir değişiklik yapmanız gerekmez, sadece n (no) ile çıkış yapın.
+
+Edit advanced config? (y/n)> n
+Auto config:
+Bu, en kritik adımdır. rclone'un Google Drive hesabınızda kimlik doğrulaması yapmasını sağlar. y (yes) yazıp Enter'a basın.
+
+Use auto config? (y/n)> y
+Bu komutu çalıştırdığınızda, rclone bir web tarayıcısı açacak ve Google hesabınıza giriş yapmanızı ve rclone'un Google Drive'ınıza erişmesine izin vermenizi isteyecektir. İzin verdikten sonra, tarayıcıda bir başarı mesajı göreceksiniz ve rclone yapılandırma sihirbazında devam edecektir. Eğer tarayıcı otomatik olarak açılmazsa, terminalde size verilen URL'yi manuel olarak kopyalayıp tarayıcınıza yapıştırın.
+
+Team Drive:
+Eğer bir Google Team Drive (Shared Drive) kullanmıyorsanız n (no) yazın.
+
+Configure this as a team drive? (y/n)> n
+Yapılandırmayı Kaydetme:
+Son olarak, tüm ayarların bir özetini göreceksiniz. y (yes) yazıp Enter'a basarak yapılandırmayı kaydedin.
+
+y) Yes this is OK
+e) Edit this remote
+d) Delete this remote
+y/e/d> y
+Artık gdrive adında bir rclone uzağınız var ve Google Drive hesabınıza bağlı.
+
+3. Otomatik Yedekleme (Cron Job ile)
+rclone ile Google Drive'a otomatik yedeklemeyi ayarlamak için Linux'ta cron (zamanlanmış görevler için bir hizmet) kullanabilirsiniz.
+
+Yedekleme Komutu Oluşturma:
+Yedeklemek istediğiniz yerel dizini Google Drive'daki hedef dizine senkronize etmek için aşağıdaki rclone komutunu kullanın:
+
+Bash
+
+rclone sync /path/to/your/local/folder gdrive:/path/to/your/google/drive/folder --progress --transfers 4 --checkers 8 --log-file=/var/log/rclone.log --log-level INFO
+/path/to/your/local/folder: Bilgisayarınızda yedeklemek istediğiniz klasörün yolu.
+gdrive:/path/to/your/google/drive/folder: Google Drive'da yedeklerin depolanacağı klasörün yolu. Eğer Google Drive'da belirli bir klasör oluşturmak istemiyorsanız, sadece gdrive: yazabilirsiniz, bu da yedekleri Google Drive'ınızın kök dizinine atar.
+sync: Kaynak ve hedefi senkronize eder. Bu, kaynakta var olmayan dosyaların hedeften silineceği anlamına gelir. Eğer sadece eklemek veya güncellemek istiyorsanız copy kullanabilirsiniz.
+--progress: Komut çalışırken ilerlemeyi gösterir (cron job içinde bu çıktıyı görmeyeceksiniz, ancak manuel çalışırken faydalıdır).
+--transfers 4: Aynı anda kaç dosyanın aktarılacağını belirler. Bu, bağlantı hızınıza ve CPU'nuzun gücüne göre ayarlanabilir.
+--checkers 8: Dosya bütünlüğünü kontrol etmek için kaç denetleyicinin kullanılacağını belirler.
+--log-file=/var/log/rclone.log: rclone'un günlük (log) çıktısını belirtilen dosyaya yazar. Bu, sorun giderme için çok önemlidir.
+--log-level INFO: Günlük dosyasının detay seviyesini ayarlar.
+Cron Job Oluşturma:
+Cron job'ları düzenlemek için terminalde aşağıdaki komutu çalıştırın:
+
+Bash
+
+crontab -e
+Bu komut, varsayılan metin düzenleyicinizde (genellikle nano veya vim) crontab dosyanızı açacaktır.
+
+Yedekleme Görevini Ekleme:
+Açılan dosyanın en altına yeni bir satır ekleyin. Örneğin, her gün gece 03:00'te yedekleme yapmak için aşağıdaki satırı ekleyebilirsiniz:
+
+Kod snippet'i
+
+0 3 * * * rclone sync /path/to/your/local/folder gdrive:/path/to/your/google/drive/folder --transfers 4 --checkers 8 --log-file=/var/log/rclone.log --log-level INFO > /dev/null 2>&1
+0 3 * * *: Bu kısım, cron zamanlamasını belirtir.
+0: Dakika (0-59)
+3: Saat (0-23, yani 03:00)
+*: Ayın günü (1-31, her gün)
+*: Ay (1-12, her ay)
+*: Haftanın günü (0-7, 0 ve 7 Pazar'dır, her gün)
+> /dev/null 2>&1: Bu kısım, komutun çıktısını susturur. Bu sayede, cron job her çalıştığında e-posta almazsınız. Hataları ve önemli bilgileri görmek için rclone günlük dosyasını (/var/log/rclone.log) kontrol etmelisiniz.
+Değişiklikleri kaydedin ve düzenleyiciden çıkın (Nano'da Ctrl+O, Enter, Ctrl+X; Vim'de Esc, :wq, Enter).
+
+Günlük Dosyasını Kontrol Edin:
+Cron job'un düzgün çalışıp çalışmadığını kontrol etmek için yedekleme zamanından sonra /var/log/rclone.log dosyasını kontrol edin:
+
+Bash
+
+cat /var/log/rclone.log
+Bu dosya, rclone işlemlerinin detaylarını içerecektir.
