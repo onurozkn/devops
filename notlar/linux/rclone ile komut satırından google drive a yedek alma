@@ -65,7 +65,8 @@ Auto config:
 Bu, en kritik adımdır. rclone'un Google Drive hesabınızda kimlik doğrulaması yapmasını sağlar. y (yes) yazıp Enter'a basın.
 
 Use auto config? (y/n)> y
-Bu komutu çalıştırdığınızda, rclone bir web tarayıcısı açacak ve Google hesabınıza giriş yapmanızı ve rclone'un Google Drive'ınıza erişmesine izin vermenizi isteyecektir. İzin verdikten sonra, tarayıcıda bir başarı mesajı göreceksiniz ve rclone yapılandırma sihirbazında devam edecektir. Eğer tarayıcı otomatik olarak açılmazsa, terminalde size verilen URL'yi manuel olarak kopyalayıp tarayıcınıza yapıştırın.
+Yes: Bu komutu çalıştırdığınızda, rclone bir web tarayıcısı açacak ve Google hesabınıza giriş yapmanızı ve rclone'un Google Drive'ınıza erişmesine izin vermenizi isteyecektir. İzin verdikten sonra, tarayıcıda bir başarı mesajı göreceksiniz ve rclone yapılandırma sihirbazında devam edecektir. Eğer tarayıcı otomatik olarak açılmazsa, terminalde size verilen URL'yi manuel olarak kopyalayıp tarayıcınıza yapıştırın.
+No: Eğer başka bir bilgisayardan access token alacaksanız bu seçeneği seçebilirsiniz. Tokeni alacağınız bilgisayara gidip rclone authorize "drive" komutunu kullanmanız gerekir. Size verdiği url den google drive hesabınıza girdikten sonra bir token üretecek ve siz bu tokeni rclone yapmak istediğiniz sunucuya yapıştırabilirsiniz.
 
 Team Drive:
 Eğer bir Google Team Drive (Shared Drive) kullanmıyorsanız n (no) yazın.
